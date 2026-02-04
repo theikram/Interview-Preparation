@@ -3,25 +3,25 @@ const expressData = {
     // ========== WHAT IS EXPRESS ==========
     "What is Express.js?": {
         concept: `
-&lt;p&gt;&lt;strong&gt;🚂 Understanding Express.js&lt;/strong&gt;&lt;/p&gt;
+<p><strong>🚂 Understanding Express.js</strong></p>
 
-&lt;p&gt;Remember how we built a server with Node.js and had to manually check URLs with if-else statements? That was tedious! Express.js makes building servers MUCH easier.&lt;/p&gt;
+<p>Remember how we built a server with Node.js and had to manually check URLs with if-else statements? That was tedious! Express.js makes building servers MUCH easier.</p>
 
-&lt;p&gt;&lt;strong&gt;Express.js is a framework for Node.js&lt;/strong&gt; that provides simple, clean ways to:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Handle different routes (URLs)&lt;/li&gt;
-&lt;li&gt;Process incoming data&lt;/li&gt;
-&lt;li&gt;Send responses&lt;/li&gt;
-&lt;li&gt;Use middleware (we'll explain this!)&lt;/li&gt;
-&lt;li&gt;Build REST APIs&lt;/li&gt;
-&lt;/ul&gt;
+<p><strong>Express.js is a framework for Node.js</strong> that provides simple, clean ways to:</p>
+<ul>
+<li>Handle different routes (URLs)</li>
+<li>Process incoming data</li>
+<li>Send responses</li>
+<li>Use middleware (we'll explain this!)</li>
+<li>Build REST APIs</li>
+</ul>
 
-&lt;p&gt;&lt;strong&gt;Analogy:&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;If Node.js is like having a kitchen (basic tools), Express.js is like having a fully organized kitchen with labeled drawers, pre-set recipes, and helpful gadgets. Same ingredients, but MUCH easier to cook!&lt;/p&gt;
+<p><strong>Analogy:</strong></p>
+<p>If Node.js is like having a kitchen (basic tools), Express.js is like having a fully organized kitchen with labeled drawers, pre-set recipes, and helpful gadgets. Same ingredients, but MUCH easier to cook!</p>
 
-&lt;hr&gt;
-&lt;p&gt;&lt;strong&gt;📋 Basic Express Server:&lt;/strong&gt;&lt;/p&gt;
-&lt;pre&gt;
+<hr>
+<p><strong>📋 Basic Express Server:</strong></p>
+<pre>
 // Step 1: Install Express
 // npm install express
 
@@ -30,78 +30,78 @@ const express = require('express');
 const app = express();
 
 // Step 3: Define a route
-app.get('/', (req, res) =&gt; {
+app.get('/', (req, res) => {
     res.send('Hello from Express!');
 });
 
 // Step 4: Start server
-app.listen(3000, () =&gt; {
+app.listen(3000, () => {
     console.log('Server running on port 3000');
 });
-&lt;/pre&gt;
+</pre>
 
-&lt;p&gt;&lt;strong&gt;Compare to Pure Node.js:&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;With Express: 10 lines of clean code&lt;br&gt;
-Without Express: 25+ lines with manual URL parsing&lt;/p&gt;
+<p><strong>Compare to Pure Node.js:</strong></p>
+<p>With Express: 10 lines of clean code<br>
+Without Express: 25+ lines with manual URL parsing</p>
 `
     },
 
     // ========== ROUTES ==========
     "Routes (URL Handling)": {
         concept: `
-&lt;p&gt;&lt;strong&gt;🛣️ Understanding Routes in Express&lt;/strong&gt;&lt;/p&gt;
+<p><strong>🛣️ Understanding Routes in Express</strong></p>
 
-&lt;p&gt;A route is the combination of a URL path and an HTTP method. When users visit different URLs, different code runs.&lt;/p&gt;
+<p>A route is the combination of a URL path and an HTTP method. When users visit different URLs, different code runs.</p>
 
-&lt;p&gt;&lt;strong&gt;Route = HTTP Method + Path + Handler Function&lt;/strong&gt;&lt;/p&gt;
+<p><strong>Route = HTTP Method + Path + Handler Function</strong></p>
 
-&lt;hr&gt;
-&lt;p&gt;&lt;strong&gt;📋 Basic Routes:&lt;/strong&gt;&lt;/p&gt;
-&lt;pre&gt;
+<hr>
+<p><strong>📋 Basic Routes:</strong></p>
+<pre>
 const express = require('express');
 const app = express();
 
 // GET request to home page
-app.get('/', (req, res) =&gt; {
+app.get('/', (req, res) => {
     res.send('Home Page');
 });
 
 // GET request to about page
-app.get('/about', (req, res) =&gt; {
+app.get('/about', (req, res) => {
     res.send('About Us');
 });
 
 // POST request (usually for forms/creating data)
-app.post('/contact', (req, res) =&gt; {
+app.post('/contact', (req, res) => {
     res.send('Message received!');
 });
 
 // PUT request (update data)
-app.put('/user', (req, res) =&gt; {
+app.put('/user', (req, res) => {
     res.send('User updated!');
 });
 
 // DELETE request
-app.delete('/user', (req, res) =&gt; {
+app.delete('/user', (req, res) => {
     res.send('User deleted!');
 });
 
 app.listen(3000);
-&lt;/pre&gt;
+</pre>
 
-&lt;hr&gt;
-&lt;p&gt;&lt;strong&gt;📋 Route Parameters (Dynamic URLs):&lt;/strong&gt;&lt;/p&gt;
-&lt;pre&gt;
+<hr>
+<p><strong>📋 Route Parameters (Dynamic URLs):</strong></p>
+<pre>
 // :id is a parameter - it can be any value
 // /users/1, /users/42, /users/ali all match this route
 
-app.get('/users/:id', (req, res) =&gt; {
+app.get('/users/:id', (req, res) => {
     const userId = req.params.id;  // Get the value
     res.send('User ID: ' + userId);
 });
 
 // Multiple parameters
-app.get('/posts/:year/:month', (req, res) =&gt; {
+app.get('/posts/:year/:month', (req, res) => {
     const year = req.params.year;
     const month = req.params.month;
     res.send('Posts from ' + month + '/' + year);
@@ -109,14 +109,14 @@ app.get('/posts/:year/:month', (req, res) =&gt; {
 
 // Example:
 // /posts/2024/01 → "Posts from 01/2024"
-&lt;/pre&gt;
+</pre>
 
-&lt;hr&gt;
-&lt;p&gt;&lt;strong&gt;📋 Query Strings (?key=value):&lt;/strong&gt;&lt;/p&gt;
-&lt;pre&gt;
-// URL: /search?keyword=phone&amp;sort=price
+<hr>
+<p><strong>📋 Query Strings (?key=value):</strong></p>
+<pre>
+// URL: /search?keyword=phone&sort=price
 
-app.get('/search', (req, res) =&gt; {
+app.get('/search', (req, res) => {
     const keyword = req.query.keyword;  // "phone"
     const sort = req.query.sort;        // "price"
     
@@ -126,25 +126,25 @@ app.get('/search', (req, res) =&gt; {
 // When to use what:
 // Route params (/users/:id) → Required, identifies a resource
 // Query strings (?sort=new) → Optional, filters/options
-&lt;/pre&gt;
+</pre>
 `
     },
 
     // ========== REQUEST & RESPONSE ==========
-    "Request &amp; Response Objects": {
+    "Request & Response Objects": {
         concept: `
-&lt;p&gt;&lt;strong&gt;📬 Understanding req and res&lt;/strong&gt;&lt;/p&gt;
+<p><strong>📬 Understanding req and res</strong></p>
 
-&lt;p&gt;Every route handler receives two objects:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;req (request)&lt;/strong&gt; - Information about the incoming request&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;res (response)&lt;/strong&gt; - Methods to send back a response&lt;/li&gt;
-&lt;/ul&gt;
+<p>Every route handler receives two objects:</p>
+<ul>
+<li><strong>req (request)</strong> - Information about the incoming request</li>
+<li><strong>res (response)</strong> - Methods to send back a response</li>
+</ul>
 
-&lt;hr&gt;
-&lt;p&gt;&lt;strong&gt;📋 The Request Object (req):&lt;/strong&gt;&lt;/p&gt;
-&lt;pre&gt;
-app.post('/users', (req, res) =&gt; {
+<hr>
+<p><strong>📋 The Request Object (req):</strong></p>
+<pre>
+app.post('/users', (req, res) => {
     // URL path
     console.log(req.path);       // "/users"
     
@@ -166,12 +166,12 @@ app.post('/users', (req, res) =&gt; {
     // Cookies
     console.log(req.cookies);    // { token: "abc123" }
 });
-&lt;/pre&gt;
+</pre>
 
-&lt;hr&gt;
-&lt;p&gt;&lt;strong&gt;📋 The Response Object (res):&lt;/strong&gt;&lt;/p&gt;
-&lt;pre&gt;
-app.get('/example', (req, res) =&gt; {
+<hr>
+<p><strong>📋 The Response Object (res):</strong></p>
+<pre>
+app.get('/example', (req, res) => {
     // Send plain text
     res.send('Hello World');
     
@@ -199,39 +199,39 @@ app.get('/example', (req, res) =&gt; {
 // 403 - Forbidden (no permission)
 // 404 - Not Found
 // 500 - Server Error
-&lt;/pre&gt;
+</pre>
 `
     },
 
     // ========== MIDDLEWARE ==========
     "Middleware (The Magic of Express)": {
         concept: `
-&lt;p&gt;&lt;strong&gt;🔗 Understanding Middleware&lt;/strong&gt;&lt;/p&gt;
+<p><strong>🔗 Understanding Middleware</strong></p>
 
-&lt;p&gt;Middleware is code that runs BETWEEN receiving a request and sending a response. Think of it as checkpoints the request passes through.&lt;/p&gt;
+<p>Middleware is code that runs BETWEEN receiving a request and sending a response. Think of it as checkpoints the request passes through.</p>
 
-&lt;p&gt;&lt;strong&gt;Analogy - Airport Security:&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;When you fly, you don't go directly to the plane. You pass through:&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;Check-in counter (verify ticket)&lt;/li&gt;
-&lt;li&gt;Security screening (check bags)&lt;/li&gt;
-&lt;li&gt;Passport control (verify identity)&lt;/li&gt;
-&lt;li&gt;Finally, board the plane&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;Each step is like middleware - it processes you and either lets you continue or stops you!&lt;/p&gt;
+<p><strong>Analogy - Airport Security:</strong></p>
+<p>When you fly, you don't go directly to the plane. You pass through:</p>
+<ol>
+<li>Check-in counter (verify ticket)</li>
+<li>Security screening (check bags)</li>
+<li>Passport control (verify identity)</li>
+<li>Finally, board the plane</li>
+</ol>
+<p>Each step is like middleware - it processes you and either lets you continue or stops you!</p>
 
-&lt;p&gt;&lt;strong&gt;Common Uses of Middleware:&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Logging every request&lt;/li&gt;
-&lt;li&gt;Checking if user is logged in&lt;/li&gt;
-&lt;li&gt;Parsing JSON from request body&lt;/li&gt;
-&lt;li&gt;Handling errors&lt;/li&gt;
-&lt;li&gt;Adding CORS headers&lt;/li&gt;
-&lt;/ul&gt;
+<p><strong>Common Uses of Middleware:</strong></p>
+<ul>
+<li>Logging every request</li>
+<li>Checking if user is logged in</li>
+<li>Parsing JSON from request body</li>
+<li>Handling errors</li>
+<li>Adding CORS headers</li>
+</ul>
 
-&lt;hr&gt;
-&lt;p&gt;&lt;strong&gt;📋 Creating Middleware:&lt;/strong&gt;&lt;/p&gt;
-&lt;pre&gt;
+<hr>
+<p><strong>📋 Creating Middleware:</strong></p>
+<pre>
 // Middleware signature: (req, res, next)
 // next() passes control to the next middleware/route
 
@@ -239,7 +239,7 @@ const express = require('express');
 const app = express();
 
 // GLOBAL MIDDLEWARE - runs for EVERY request
-app.use((req, res, next) =&gt; {
+app.use((req, res, next) => {
     console.log('Request received at:', new Date());
     console.log('Method:', req.method, 'Path:', req.path);
     
@@ -247,7 +247,7 @@ app.use((req, res, next) =&gt; {
 });
 
 // ROUTE-SPECIFIC MIDDLEWARE
-const checkAuth = (req, res, next) =&gt; {
+const checkAuth = (req, res, next) => {
     if (req.headers.authorization) {
         next();  // User has token, continue
     } else {
@@ -257,19 +257,19 @@ const checkAuth = (req, res, next) =&gt; {
 };
 
 // Apply middleware to specific route
-app.get('/dashboard', checkAuth, (req, res) =&gt; {
+app.get('/dashboard', checkAuth, (req, res) => {
     res.send('Welcome to dashboard!');
 });
 
 // This route has no checkAuth, anyone can access
-app.get('/public', (req, res) =&gt; {
+app.get('/public', (req, res) => {
     res.send('Public page - no login needed');
 });
-&lt;/pre&gt;
+</pre>
 
-&lt;hr&gt;
-&lt;p&gt;&lt;strong&gt;📋 Built-in Middleware:&lt;/strong&gt;&lt;/p&gt;
-&lt;pre&gt;
+<hr>
+<p><strong>📋 Built-in Middleware:</strong></p>
+<pre>
 // Parse JSON bodies (ESSENTIAL for APIs!)
 app.use(express.json());
 
@@ -278,26 +278,26 @@ app.use(express.urlencoded({ extended: true }));
 
 // Serve static files (CSS, images, etc.)
 app.use(express.static('public'));
-&lt;/pre&gt;
+</pre>
 `
     },
 
     // ========== CRUD API ==========
     "Building a CRUD API": {
         concept: `
-&lt;p&gt;&lt;strong&gt;🔄 CRUD = Create, Read, Update, Delete&lt;/strong&gt;&lt;/p&gt;
+<p><strong>🔄 CRUD = Create, Read, Update, Delete</strong></p>
 
-&lt;p&gt;These are the four basic operations for any data. Almost every app does these:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;Create&lt;/strong&gt; - Add new data (POST)&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Read&lt;/strong&gt; - Get data (GET)&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Update&lt;/strong&gt; - Change data (PUT/PATCH)&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Delete&lt;/strong&gt; - Remove data (DELETE)&lt;/li&gt;
-&lt;/ul&gt;
+<p>These are the four basic operations for any data. Almost every app does these:</p>
+<ul>
+<li><strong>Create</strong> - Add new data (POST)</li>
+<li><strong>Read</strong> - Get data (GET)</li>
+<li><strong>Update</strong> - Change data (PUT/PATCH)</li>
+<li><strong>Delete</strong> - Remove data (DELETE)</li>
+</ul>
 
-&lt;hr&gt;
-&lt;p&gt;&lt;strong&gt;📋 Complete CRUD API Example (Simple):&lt;/strong&gt;&lt;/p&gt;
-&lt;pre&gt;
+<hr>
+<p><strong>📋 Complete CRUD API Example (Simple):</strong></p>
+<pre>
 const express = require('express');
 const app = express();
 app.use(express.json());
@@ -309,7 +309,7 @@ let users = [
 ];
 
 // CREATE - Add new user
-app.post('/users', (req, res) =&gt; {
+app.post('/users', (req, res) => {
     const newUser = {
         id: users.length + 1,
         name: req.body.name,
@@ -320,13 +320,13 @@ app.post('/users', (req, res) =&gt; {
 });
 
 // READ - Get all users
-app.get('/users', (req, res) =&gt; {
+app.get('/users', (req, res) => {
     res.json(users);
 });
 
 // READ - Get one user by ID
-app.get('/users/:id', (req, res) =&gt; {
-    const user = users.find(u =&gt; u.id === parseInt(req.params.id));
+app.get('/users/:id', (req, res) => {
+    const user = users.find(u => u.id === parseInt(req.params.id));
     
     if (!user) {
         return res.status(404).json({ error: 'User not found' });
@@ -336,8 +336,8 @@ app.get('/users/:id', (req, res) =&gt; {
 });
 
 // UPDATE - Change user data
-app.put('/users/:id', (req, res) =&gt; {
-    const user = users.find(u =&gt; u.id === parseInt(req.params.id));
+app.put('/users/:id', (req, res) => {
+    const user = users.find(u => u.id === parseInt(req.params.id));
     
     if (!user) {
         return res.status(404).json({ error: 'User not found' });
@@ -349,8 +349,8 @@ app.put('/users/:id', (req, res) =&gt; {
 });
 
 // DELETE - Remove user
-app.delete('/users/:id', (req, res) =&gt; {
-    const index = users.findIndex(u =&gt; u.id === parseInt(req.params.id));
+app.delete('/users/:id', (req, res) => {
+    const index = users.findIndex(u => u.id === parseInt(req.params.id));
     
     if (index === -1) {
         return res.status(404).json({ error: 'User not found' });
@@ -361,30 +361,30 @@ app.delete('/users/:id', (req, res) =&gt; {
 });
 
 app.listen(3000);
-&lt;/pre&gt;
+</pre>
 `
     },
 
     // ========== VALIDATION ==========
     "Input Validation": {
         concept: `
-&lt;p&gt;&lt;strong&gt;✅ Validating User Input&lt;/strong&gt;&lt;/p&gt;
+<p><strong>✅ Validating User Input</strong></p>
 
-&lt;p&gt;Never trust user input! Users can send invalid or malicious data. Always validate before using.&lt;/p&gt;
+<p>Never trust user input! Users can send invalid or malicious data. Always validate before using.</p>
 
-&lt;p&gt;&lt;strong&gt;What to Validate:&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Required fields are present&lt;/li&gt;
-&lt;li&gt;Data types are correct (string, number, etc.)&lt;/li&gt;
-&lt;li&gt;Values are within allowed range&lt;/li&gt;
-&lt;li&gt;Email format is valid&lt;/li&gt;
-&lt;li&gt;Password meets requirements&lt;/li&gt;
-&lt;/ul&gt;
+<p><strong>What to Validate:</strong></p>
+<ul>
+<li>Required fields are present</li>
+<li>Data types are correct (string, number, etc.)</li>
+<li>Values are within allowed range</li>
+<li>Email format is valid</li>
+<li>Password meets requirements</li>
+</ul>
 
-&lt;hr&gt;
-&lt;p&gt;&lt;strong&gt;📋 Manual Validation:&lt;/strong&gt;&lt;/p&gt;
-&lt;pre&gt;
-app.post('/register', (req, res) =&gt; {
+<hr>
+<p><strong>📋 Manual Validation:</strong></p>
+<pre>
+app.post('/register', (req, res) => {
     const { name, email, password } = req.body;
     
     // Check required fields
@@ -403,7 +403,7 @@ app.post('/register', (req, res) =&gt; {
     }
     
     // Check password length
-    if (password.length &lt; 6) {
+    if (password.length < 6) {
         return res.status(400).json({
             error: 'Password must be at least 6 characters'
         });
@@ -412,11 +412,11 @@ app.post('/register', (req, res) =&gt; {
     // All valid - proceed!
     res.json({ message: 'User registered!' });
 });
-&lt;/pre&gt;
+</pre>
 
-&lt;hr&gt;
-&lt;p&gt;&lt;strong&gt;📋 Using express-validator (Cleaner):&lt;/strong&gt;&lt;/p&gt;
-&lt;pre&gt;
+<hr>
+<p><strong>📋 Using express-validator (Cleaner):</strong></p>
+<pre>
 // npm install express-validator
 
 const { body, validationResult } = require('express-validator');
@@ -428,7 +428,7 @@ app.post('/register',
     body('password').isLength({ min: 6 }).withMessage('Password too short'),
     
     // Handler
-    (req, res) =&gt; {
+    (req, res) => {
         const errors = validationResult(req);
         
         if (!errors.isEmpty()) {
@@ -438,28 +438,28 @@ app.post('/register',
         res.json({ message: 'Valid!' });
     }
 );
-&lt;/pre&gt;
+</pre>
 `
     },
 
     // ========== ERROR HANDLING ==========
     "Error Handling": {
         concept: `
-&lt;p&gt;&lt;strong&gt;⚠️ Handling Errors Properly&lt;/strong&gt;&lt;/p&gt;
+<p><strong>⚠️ Handling Errors Properly</strong></p>
 
-&lt;p&gt;Things go wrong! Databases fail, users send bad data, network issues occur. Good error handling keeps your app running and helps debugging.&lt;/p&gt;
+<p>Things go wrong! Databases fail, users send bad data, network issues occur. Good error handling keeps your app running and helps debugging.</p>
 
-&lt;hr&gt;
-&lt;p&gt;&lt;strong&gt;📋 Try-Catch for Async Routes:&lt;/strong&gt;&lt;/p&gt;
-&lt;pre&gt;
+<hr>
+<p><strong>📋 Try-Catch for Async Routes:</strong></p>
+<pre>
 // Without error handling - server crashes!
-app.get('/users', async (req, res) =&gt; {
+app.get('/users', async (req, res) => {
     const users = await database.getUsers();  // What if this fails?
     res.json(users);
 });
 
 // With try-catch - graceful error handling
-app.get('/users', async (req, res) =&gt; {
+app.get('/users', async (req, res) => {
     try {
         const users = await database.getUsers();
         res.json(users);
@@ -468,11 +468,11 @@ app.get('/users', async (req, res) =&gt; {
         res.status(500).json({ error: 'Something went wrong' });
     }
 });
-&lt;/pre&gt;
+</pre>
 
-&lt;hr&gt;
-&lt;p&gt;&lt;strong&gt;📋 Global Error Handler (Express Pattern):&lt;/strong&gt;&lt;/p&gt;
-&lt;pre&gt;
+<hr>
+<p><strong>📋 Global Error Handler (Express Pattern):</strong></p>
+<pre>
 // Create custom error class
 class AppError extends Error {
     constructor(message, statusCode) {
@@ -482,7 +482,7 @@ class AppError extends Error {
 }
 
 // Use in routes
-app.get('/users/:id', (req, res, next) =&gt; {
+app.get('/users/:id', (req, res, next) => {
     const user = findUser(req.params.id);
     
     if (!user) {
@@ -493,7 +493,7 @@ app.get('/users/:id', (req, res, next) =&gt; {
 });
 
 // Global error handler (must have 4 parameters!)
-app.use((err, req, res, next) =&gt; {
+app.use((err, req, res, next) => {
     console.error(err.stack);
     
     res.status(err.statusCode || 500).json({
@@ -501,37 +501,37 @@ app.use((err, req, res, next) =&gt; {
         message: err.message || 'Internal server error'
     });
 });
-&lt;/pre&gt;
+</pre>
 
-&lt;hr&gt;
-&lt;p&gt;&lt;strong&gt;📋 Handle 404 (No Route Found):&lt;/strong&gt;&lt;/p&gt;
-&lt;pre&gt;
+<hr>
+<p><strong>📋 Handle 404 (No Route Found):</strong></p>
+<pre>
 // Put this AFTER all other routes
-app.use((req, res) =&gt; {
+app.use((req, res) => {
     res.status(404).json({ error: 'Route not found' });
 });
-&lt;/pre&gt;
+</pre>
 `
     },
 
     // ========== CORS ==========
     "CORS Explained": {
         concept: `
-&lt;p&gt;&lt;strong&gt;🌐 What is CORS?&lt;/strong&gt;&lt;/p&gt;
+<p><strong>🌐 What is CORS?</strong></p>
 
-&lt;p&gt;CORS stands for &lt;strong&gt;Cross-Origin Resource Sharing&lt;/strong&gt;. It's a security feature in browsers.&lt;/p&gt;
+<p>CORS stands for <strong>Cross-Origin Resource Sharing</strong>. It's a security feature in browsers.</p>
 
-&lt;p&gt;&lt;strong&gt;The Problem:&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;Your frontend is at &lt;code&gt;http://localhost:3000&lt;/code&gt;&lt;br&gt;
-Your API is at &lt;code&gt;http://localhost:5000&lt;/code&gt;&lt;br&gt;
-These are different "origins" - browser blocks the request by default!&lt;/p&gt;
+<p><strong>The Problem:</strong></p>
+<p>Your frontend is at <code>http://localhost:3000</code><br>
+Your API is at <code>http://localhost:5000</code><br>
+These are different "origins" - browser blocks the request by default!</p>
 
-&lt;p&gt;&lt;strong&gt;Why This Security Exists:&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;Imagine you're logged into your bank. A malicious website could make requests to your bank's API using YOUR cookies. CORS prevents this by requiring the server to explicitly allow requests from other origins.&lt;/p&gt;
+<p><strong>Why This Security Exists:</strong></p>
+<p>Imagine you're logged into your bank. A malicious website could make requests to your bank's API using YOUR cookies. CORS prevents this by requiring the server to explicitly allow requests from other origins.</p>
 
-&lt;hr&gt;
-&lt;p&gt;&lt;strong&gt;📋 Enabling CORS:&lt;/strong&gt;&lt;/p&gt;
-&lt;pre&gt;
+<hr>
+<p><strong>📋 Enabling CORS:</strong></p>
+<pre>
 // npm install cors
 
 const cors = require('cors');
@@ -555,54 +555,54 @@ app.use(cors({
     origin: 'http://localhost:3000',
     credentials: true
 }));
-&lt;/pre&gt;
+</pre>
 `
     },
 
     // ========== ROUTER ==========
     "Express Router (Organizing Routes)": {
         concept: `
-&lt;p&gt;&lt;strong&gt;📁 Organizing Routes with Express Router&lt;/strong&gt;&lt;/p&gt;
+<p><strong>📁 Organizing Routes with Express Router</strong></p>
 
-&lt;p&gt;As your app grows, putting all routes in one file becomes messy. Express Router lets you split routes into separate files.&lt;/p&gt;
+<p>As your app grows, putting all routes in one file becomes messy. Express Router lets you split routes into separate files.</p>
 
-&lt;hr&gt;
-&lt;p&gt;&lt;strong&gt;📋 Project Structure:&lt;/strong&gt;&lt;/p&gt;
-&lt;pre&gt;
+<hr>
+<p><strong>📋 Project Structure:</strong></p>
+<pre>
 project/
 ├── app.js              (main file)
 ├── routes/
 │   ├── userRoutes.js
 │   ├── productRoutes.js
 │   └── authRoutes.js
-&lt;/pre&gt;
+</pre>
 
-&lt;hr&gt;
-&lt;p&gt;&lt;strong&gt;📋 Creating a Router:&lt;/strong&gt;&lt;/p&gt;
-&lt;pre&gt;
+<hr>
+<p><strong>📋 Creating a Router:</strong></p>
+<pre>
 // routes/userRoutes.js
 const express = require('express');
 const router = express.Router();
 
 // These routes are relative to where we mount the router
-router.get('/', (req, res) =&gt; {
+router.get('/', (req, res) => {
     res.json({ message: 'All users' });
 });
 
-router.get('/:id', (req, res) =&gt; {
+router.get('/:id', (req, res) => {
     res.json({ message: 'User ' + req.params.id });
 });
 
-router.post('/', (req, res) =&gt; {
+router.post('/', (req, res) => {
     res.json({ message: 'Create user' });
 });
 
 module.exports = router;
-&lt;/pre&gt;
+</pre>
 
-&lt;hr&gt;
-&lt;p&gt;&lt;strong&gt;📋 Using the Router:&lt;/strong&gt;&lt;/p&gt;
-&lt;pre&gt;
+<hr>
+<p><strong>📋 Using the Router:</strong></p>
+<pre>
 // app.js
 const express = require('express');
 const userRoutes = require('./routes/userRoutes');
@@ -620,38 +620,38 @@ app.use('/api/products', productRoutes);
 // GET /api/products   → productRoutes '/'
 
 app.listen(3000);
-&lt;/pre&gt;
+</pre>
 `
     },
 
     // ========== REST API DESIGN ==========
     "RESTful API Design": {
         concept: `
-&lt;p&gt;&lt;strong&gt;🏗️ Designing Clean APIs&lt;/strong&gt;&lt;/p&gt;
+<p><strong>🏗️ Designing Clean APIs</strong></p>
 
-&lt;p&gt;REST (Representational State Transfer) is a set of conventions for designing APIs. Following these makes your API predictable and easy to use.&lt;/p&gt;
+<p>REST (Representational State Transfer) is a set of conventions for designing APIs. Following these makes your API predictable and easy to use.</p>
 
-&lt;p&gt;&lt;strong&gt;REST Principles:&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Use nouns for endpoints, not verbs&lt;/li&gt;
-&lt;li&gt;Use HTTP methods to define actions&lt;/li&gt;
-&lt;li&gt;Use proper status codes&lt;/li&gt;
-&lt;li&gt;Return consistent response format&lt;/li&gt;
-&lt;/ul&gt;
+<p><strong>REST Principles:</strong></p>
+<ul>
+<li>Use nouns for endpoints, not verbs</li>
+<li>Use HTTP methods to define actions</li>
+<li>Use proper status codes</li>
+<li>Return consistent response format</li>
+</ul>
 
-&lt;hr&gt;
-&lt;p&gt;&lt;strong&gt;📋 Good vs Bad Endpoints:&lt;/strong&gt;&lt;/p&gt;
-&lt;table&gt;
-&lt;tr&gt;&lt;th&gt;❌ Bad&lt;/th&gt;&lt;th&gt;✅ Good&lt;/th&gt;&lt;th&gt;Why&lt;/th&gt;&lt;/tr&gt;
-&lt;tr&gt;&lt;td&gt;GET /getUsers&lt;/td&gt;&lt;td&gt;GET /users&lt;/td&gt;&lt;td&gt;GET already means 'get'&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;&lt;td&gt;POST /createUser&lt;/td&gt;&lt;td&gt;POST /users&lt;/td&gt;&lt;td&gt;POST already means 'create'&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;&lt;td&gt;DELETE /deleteUser/1&lt;/td&gt;&lt;td&gt;DELETE /users/1&lt;/td&gt;&lt;td&gt;DELETE means 'delete'&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;&lt;td&gt;GET /user&lt;/td&gt;&lt;td&gt;GET /users&lt;/td&gt;&lt;td&gt;Use plural nouns&lt;/td&gt;&lt;/tr&gt;
-&lt;/table&gt;
+<hr>
+<p><strong>📋 Good vs Bad Endpoints:</strong></p>
+<table>
+<tr><th>❌ Bad</th><th>✅ Good</th><th>Why</th></tr>
+<tr><td>GET /getUsers</td><td>GET /users</td><td>GET already means 'get'</td></tr>
+<tr><td>POST /createUser</td><td>POST /users</td><td>POST already means 'create'</td></tr>
+<tr><td>DELETE /deleteUser/1</td><td>DELETE /users/1</td><td>DELETE means 'delete'</td></tr>
+<tr><td>GET /user</td><td>GET /users</td><td>Use plural nouns</td></tr>
+</table>
 
-&lt;hr&gt;
-&lt;p&gt;&lt;strong&gt;📋 Standard CRUD Endpoints:&lt;/strong&gt;&lt;/p&gt;
-&lt;pre&gt;
+<hr>
+<p><strong>📋 Standard CRUD Endpoints:</strong></p>
+<pre>
 GET    /api/users       → Get all users
 GET    /api/users/:id   → Get one user
 POST   /api/users       → Create user
@@ -662,11 +662,11 @@ DELETE /api/users/:id   → Delete user
 // Nested resources
 GET    /api/users/:id/posts    → Get user's posts
 POST   /api/users/:id/posts    → Create post for user
-&lt;/pre&gt;
+</pre>
 
-&lt;hr&gt;
-&lt;p&gt;&lt;strong&gt;📋 Consistent Response Format:&lt;/strong&gt;&lt;/p&gt;
-&lt;pre&gt;
+<hr>
+<p><strong>📋 Consistent Response Format:</strong></p>
+<pre>
 // Success response
 {
     "status": "success",
@@ -680,44 +680,44 @@ POST   /api/users/:id/posts    → Create post for user
     "status": "error",
     "message": "User not found"
 }
-&lt;/pre&gt;
+</pre>
 `
     },
 
     // ========== EXPRESS INTERVIEW QUESTIONS ==========
     "Express.js Interview Questions": {
         concept: `
-&lt;p&gt;&lt;strong&gt;❓ Common Express.js Interview Questions&lt;/strong&gt;&lt;/p&gt;
+<p><strong>❓ Common Express.js Interview Questions</strong></p>
 
-&lt;p&gt;&lt;strong&gt;Q1: What is Express.js?&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;Express.js is a minimal web framework for Node.js that provides features for building web applications and APIs. It simplifies routing, middleware, and request handling.&lt;/p&gt;
+<p><strong>Q1: What is Express.js?</strong></p>
+<p>Express.js is a minimal web framework for Node.js that provides features for building web applications and APIs. It simplifies routing, middleware, and request handling.</p>
 
-&lt;p&gt;&lt;strong&gt;Q2: What is middleware in Express?&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;Middleware is a function that has access to req, res, and next. It runs between receiving a request and sending a response. Used for logging, authentication, parsing data, etc.&lt;/p&gt;
+<p><strong>Q2: What is middleware in Express?</strong></p>
+<p>Middleware is a function that has access to req, res, and next. It runs between receiving a request and sending a response. Used for logging, authentication, parsing data, etc.</p>
 
-&lt;p&gt;&lt;strong&gt;Q3: What is the difference between app.use() and app.get()?&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;app.use() handles ALL HTTP methods and can match partial paths. app.get() only handles GET requests and matches exact paths. app.use() is typically for middleware.&lt;/p&gt;
+<p><strong>Q3: What is the difference between app.use() and app.get()?</strong></p>
+<p>app.use() handles ALL HTTP methods and can match partial paths. app.get() only handles GET requests and matches exact paths. app.use() is typically for middleware.</p>
 
-&lt;p&gt;&lt;strong&gt;Q4: How do you handle errors in Express?&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;Using try-catch blocks in routes, passing errors to next(), and creating a global error handler middleware with 4 parameters (err, req, res, next).&lt;/p&gt;
+<p><strong>Q4: How do you handle errors in Express?</strong></p>
+<p>Using try-catch blocks in routes, passing errors to next(), and creating a global error handler middleware with 4 parameters (err, req, res, next).</p>
 
-&lt;p&gt;&lt;strong&gt;Q5: What is req.params vs req.query vs req.body?&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;req.params contains route parameters (/users/:id). req.query contains query string values (?sort=new). req.body contains POST/PUT data from the request body.&lt;/p&gt;
+<p><strong>Q5: What is req.params vs req.query vs req.body?</strong></p>
+<p>req.params contains route parameters (/users/:id). req.query contains query string values (?sort=new). req.body contains POST/PUT data from the request body.</p>
 
-&lt;p&gt;&lt;strong&gt;Q6: What is CORS and how do you enable it?&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;CORS (Cross-Origin Resource Sharing) controls which domains can access your API. Enable with the cors npm package: app.use(cors()).&lt;/p&gt;
+<p><strong>Q6: What is CORS and how do you enable it?</strong></p>
+<p>CORS (Cross-Origin Resource Sharing) controls which domains can access your API. Enable with the cors npm package: app.use(cors()).</p>
 
-&lt;p&gt;&lt;strong&gt;Q7: What is Express Router?&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;Express Router is a mini-app that lets you organize routes into separate modules. Create with express.Router(), define routes, then mount with app.use('/path', router).&lt;/p&gt;
+<p><strong>Q7: What is Express Router?</strong></p>
+<p>Express Router is a mini-app that lets you organize routes into separate modules. Create with express.Router(), define routes, then mount with app.use('/path', router).</p>
 
-&lt;p&gt;&lt;strong&gt;Q8: How do you serve static files?&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;Use express.static() middleware: app.use(express.static('public')). Files in the 'public' folder will be served at root URL.&lt;/p&gt;
+<p><strong>Q8: How do you serve static files?</strong></p>
+<p>Use express.static() middleware: app.use(express.static('public')). Files in the 'public' folder will be served at root URL.</p>
 
-&lt;p&gt;&lt;strong&gt;Q9: What are the differences between PUT and PATCH?&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;PUT replaces the entire resource with new data. PATCH updates only the specified fields. PUT is idempotent (same result every time).&lt;/p&gt;
+<p><strong>Q9: What are the differences between PUT and PATCH?</strong></p>
+<p>PUT replaces the entire resource with new data. PATCH updates only the specified fields. PUT is idempotent (same result every time).</p>
 
-&lt;p&gt;&lt;strong&gt;Q10: How do you parse JSON in Express?&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;Use the built-in middleware: app.use(express.json()). This parses JSON bodies and populates req.body.&lt;/p&gt;
+<p><strong>Q10: How do you parse JSON in Express?</strong></p>
+<p>Use the built-in middleware: app.use(express.json()). This parses JSON bodies and populates req.body.</p>
 `
     }
 };

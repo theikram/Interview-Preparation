@@ -3,33 +3,33 @@ const nodeData = {
   // ========== WHAT IS NODE.JS ==========
   "What is Node.js?": {
     concept: `
-&lt;p&gt;&lt;strong&gt;🟢 Understanding Node.js from Scratch&lt;/strong&gt;&lt;/p&gt;
+<p><strong>🟢 Understanding Node.js from Scratch</strong></p>
 
-&lt;p&gt;Let me explain Node.js in the simplest way possible. Imagine you know JavaScript - you've used it to make buttons clickable, show/hide elements, and make websites interactive. But here's the thing: JavaScript traditionally only worked inside web browsers (Chrome, Firefox, etc.).&lt;/p&gt;
+<p>Let me explain Node.js in the simplest way possible. Imagine you know JavaScript - you've used it to make buttons clickable, show/hide elements, and make websites interactive. But here's the thing: JavaScript traditionally only worked inside web browsers (Chrome, Firefox, etc.).</p>
 
-&lt;p&gt;&lt;strong&gt;Node.js changed everything.&lt;/strong&gt; It lets you run JavaScript OUTSIDE the browser - on your computer, on a server, anywhere! This means you can now use JavaScript to:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Create web servers (like the ones powering Facebook, Netflix)&lt;/li&gt;
-&lt;li&gt;Build APIs (we'll explain what these are!)&lt;/li&gt;
-&lt;li&gt;Read and write files on your computer&lt;/li&gt;
-&lt;li&gt;Connect to databases&lt;/li&gt;
-&lt;li&gt;Build command-line tools&lt;/li&gt;
-&lt;/ul&gt;
+<p><strong>Node.js changed everything.</strong> It lets you run JavaScript OUTSIDE the browser - on your computer, on a server, anywhere! This means you can now use JavaScript to:</p>
+<ul>
+<li>Create web servers (like the ones powering Facebook, Netflix)</li>
+<li>Build APIs (we'll explain what these are!)</li>
+<li>Read and write files on your computer</li>
+<li>Connect to databases</li>
+<li>Build command-line tools</li>
+</ul>
 
-&lt;p&gt;&lt;strong&gt;Real-World Analogy:&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;Think of JavaScript as a chef who could only cook in restaurant kitchens (browsers). Node.js is like giving that chef a portable kitchen - now they can cook anywhere! Same skills, more places to use them.&lt;/p&gt;
+<p><strong>Real-World Analogy:</strong></p>
+<p>Think of JavaScript as a chef who could only cook in restaurant kitchens (browsers). Node.js is like giving that chef a portable kitchen - now they can cook anywhere! Same skills, more places to use them.</p>
 
-&lt;p&gt;&lt;strong&gt;Why is Node.js So Popular?&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;One Language Everywhere:&lt;/strong&gt; Use JavaScript for frontend AND backend&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Super Fast:&lt;/strong&gt; Built on Chrome's V8 engine (same thing that makes Chrome fast)&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Non-blocking:&lt;/strong&gt; Can handle many requests at once (we'll explain this)&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Huge Community:&lt;/strong&gt; Millions of free packages on NPM&lt;/li&gt;
-&lt;/ul&gt;
+<p><strong>Why is Node.js So Popular?</strong></p>
+<ul>
+<li><strong>One Language Everywhere:</strong> Use JavaScript for frontend AND backend</li>
+<li><strong>Super Fast:</strong> Built on Chrome's V8 engine (same thing that makes Chrome fast)</li>
+<li><strong>Non-blocking:</strong> Can handle many requests at once (we'll explain this)</li>
+<li><strong>Huge Community:</strong> Millions of free packages on NPM</li>
+</ul>
 
-&lt;hr&gt;
-&lt;p&gt;&lt;strong&gt;📋 Quick Start:&lt;/strong&gt;&lt;/p&gt;
-&lt;pre&gt;
+<hr>
+<p><strong>📋 Quick Start:</strong></p>
+<pre>
 // Check if Node.js is installed
 node --version
 
@@ -38,161 +38,161 @@ node myfile.js
 
 // Start Node.js interactive mode (REPL)
 node
-&gt; console.log("Hello from Node!")
+> console.log("Hello from Node!")
 Hello from Node!
-&lt;/pre&gt;
+</pre>
 `
   },
 
   // ========== WHAT ARE APIs ==========
   "What are APIs?": {
     concept: `
-&lt;p&gt;&lt;strong&gt;🔌 APIs Explained Simply&lt;/strong&gt;&lt;/p&gt;
+<p><strong>🔌 APIs Explained Simply</strong></p>
 
-&lt;p&gt;API stands for &lt;strong&gt;Application Programming Interface&lt;/strong&gt;. That sounds complicated, but it's actually a very simple concept. Let me explain with a real-life example.&lt;/p&gt;
+<p>API stands for <strong>Application Programming Interface</strong>. That sounds complicated, but it's actually a very simple concept. Let me explain with a real-life example.</p>
 
-&lt;p&gt;&lt;strong&gt;The Restaurant Analogy:&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;Imagine you're at a restaurant. You (the customer) want food from the kitchen. But you can't just walk into the kitchen and make your own food! Instead:&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;You look at the &lt;strong&gt;menu&lt;/strong&gt; (available options)&lt;/li&gt;
-&lt;li&gt;You tell the &lt;strong&gt;waiter&lt;/strong&gt; what you want&lt;/li&gt;
-&lt;li&gt;The waiter takes your &lt;strong&gt;request&lt;/strong&gt; to the kitchen&lt;/li&gt;
-&lt;li&gt;The kitchen prepares the food&lt;/li&gt;
-&lt;li&gt;The waiter brings back your &lt;strong&gt;response&lt;/strong&gt; (food!)&lt;/li&gt;
-&lt;/ol&gt;
+<p><strong>The Restaurant Analogy:</strong></p>
+<p>Imagine you're at a restaurant. You (the customer) want food from the kitchen. But you can't just walk into the kitchen and make your own food! Instead:</p>
+<ol>
+<li>You look at the <strong>menu</strong> (available options)</li>
+<li>You tell the <strong>waiter</strong> what you want</li>
+<li>The waiter takes your <strong>request</strong> to the kitchen</li>
+<li>The kitchen prepares the food</li>
+<li>The waiter brings back your <strong>response</strong> (food!)</li>
+</ol>
 
-&lt;p&gt;&lt;strong&gt;The waiter is the API!&lt;/strong&gt; It's the middleman that takes your request, communicates with the system (kitchen), and brings back the response.&lt;/p&gt;
+<p><strong>The waiter is the API!</strong> It's the middleman that takes your request, communicates with the system (kitchen), and brings back the response.</p>
 
-&lt;p&gt;&lt;strong&gt;In Programming Terms:&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;You (Frontend/App)&lt;/strong&gt; = The customer&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;API&lt;/strong&gt; = The waiter (messenger)&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Server/Database&lt;/strong&gt; = The kitchen&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Request&lt;/strong&gt; = Your order ("I want user data")&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Response&lt;/strong&gt; = What you get back (the data)&lt;/li&gt;
-&lt;/ul&gt;
+<p><strong>In Programming Terms:</strong></p>
+<ul>
+<li><strong>You (Frontend/App)</strong> = The customer</li>
+<li><strong>API</strong> = The waiter (messenger)</li>
+<li><strong>Server/Database</strong> = The kitchen</li>
+<li><strong>Request</strong> = Your order ("I want user data")</li>
+<li><strong>Response</strong> = What you get back (the data)</li>
+</ul>
 
-&lt;p&gt;&lt;strong&gt;Real Examples of APIs:&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;When you check weather on your phone → App calls Weather API&lt;/li&gt;
-&lt;li&gt;When you login with Google → App calls Google's Auth API&lt;/li&gt;
-&lt;li&gt;When you see a YouTube video → YouTube's API sends video data&lt;/li&gt;
-&lt;li&gt;When you pay online → Payment API (Stripe, PayPal) handles it&lt;/li&gt;
-&lt;/ul&gt;
+<p><strong>Real Examples of APIs:</strong></p>
+<ul>
+<li>When you check weather on your phone → App calls Weather API</li>
+<li>When you login with Google → App calls Google's Auth API</li>
+<li>When you see a YouTube video → YouTube's API sends video data</li>
+<li>When you pay online → Payment API (Stripe, PayPal) handles it</li>
+</ul>
 
-&lt;p&gt;&lt;strong&gt;So when we build Node.js/Express servers, we're building APIs!&lt;/strong&gt; We create endpoints (menu items) that other apps can call to get or send data.&lt;/p&gt;
+<p><strong>So when we build Node.js/Express servers, we're building APIs!</strong> We create endpoints (menu items) that other apps can call to get or send data.</p>
 
-&lt;hr&gt;
-&lt;p&gt;&lt;strong&gt;📋 Simple API Call Example:&lt;/strong&gt;&lt;/p&gt;
-&lt;pre&gt;
+<hr>
+<p><strong>📋 Simple API Call Example:</strong></p>
+<pre>
 // Frontend making an API call
 fetch('https://api.example.com/users')
-  .then(response =&gt; response.json())
-  .then(data =&gt; console.log(data));
+  .then(response => response.json())
+  .then(data => console.log(data));
 
 // What happens:
 // 1. Frontend REQUESTS data from /users endpoint
 // 2. Server (API) processes the request
 // 3. Server RESPONDS with user data
 // 4. Frontend receives and uses the data
-&lt;/pre&gt;
+</pre>
 `
   },
 
   // ========== ENDPOINTS VS ROUTES ==========
-  "Endpoints, Routes &amp; HTTP Methods": {
+  "Endpoints, Routes & HTTP Methods": {
     concept: `
-&lt;p&gt;&lt;strong&gt;🛣️ Understanding Endpoints, Routes, and HTTP Methods&lt;/strong&gt;&lt;/p&gt;
+<p><strong>🛣️ Understanding Endpoints, Routes, and HTTP Methods</strong></p>
 
-&lt;p&gt;These terms are often used together and can be confusing. Let me clarify each one:&lt;/p&gt;
+<p>These terms are often used together and can be confusing. Let me clarify each one:</p>
 
-&lt;p&gt;&lt;strong&gt;What is an ENDPOINT?&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;An endpoint is a specific URL where your API can be accessed. Think of it as an address. Just like your home has an address, each API function has an endpoint.&lt;/p&gt;
+<p><strong>What is an ENDPOINT?</strong></p>
+<p>An endpoint is a specific URL where your API can be accessed. Think of it as an address. Just like your home has an address, each API function has an endpoint.</p>
 
-&lt;p&gt;Examples of endpoints:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;/users&lt;/code&gt; - Get all users&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;/users/123&lt;/code&gt; - Get user with ID 123&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;/products&lt;/code&gt; - Get all products&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;/login&lt;/code&gt; - Handle user login&lt;/li&gt;
-&lt;/ul&gt;
+<p>Examples of endpoints:</p>
+<ul>
+<li><code>/users</code> - Get all users</li>
+<li><code>/users/123</code> - Get user with ID 123</li>
+<li><code>/products</code> - Get all products</li>
+<li><code>/login</code> - Handle user login</li>
+</ul>
 
-&lt;p&gt;&lt;strong&gt;What is a ROUTE?&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;A route is the CODE that handles what happens when someone visits an endpoint. It's the instructions for that address.&lt;/p&gt;
+<p><strong>What is a ROUTE?</strong></p>
+<p>A route is the CODE that handles what happens when someone visits an endpoint. It's the instructions for that address.</p>
 
-&lt;p&gt;&lt;strong&gt;Endpoint vs Route:&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;Endpoint&lt;/strong&gt; = The URL address (/users)&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Route&lt;/strong&gt; = The code that runs when that URL is called&lt;/li&gt;
-&lt;/ul&gt;
+<p><strong>Endpoint vs Route:</strong></p>
+<ul>
+<li><strong>Endpoint</strong> = The URL address (/users)</li>
+<li><strong>Route</strong> = The code that runs when that URL is called</li>
+</ul>
 
-&lt;hr&gt;
-&lt;p&gt;&lt;strong&gt;What are HTTP Methods?&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;HTTP methods tell the API WHAT you want to do. Same endpoint, different actions:&lt;/p&gt;
+<hr>
+<p><strong>What are HTTP Methods?</strong></p>
+<p>HTTP methods tell the API WHAT you want to do. Same endpoint, different actions:</p>
 
-&lt;table&gt;
-&lt;tr&gt;&lt;th&gt;Method&lt;/th&gt;&lt;th&gt;What It Does&lt;/th&gt;&lt;th&gt;Example&lt;/th&gt;&lt;/tr&gt;
-&lt;tr&gt;&lt;td&gt;&lt;strong&gt;GET&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;Read/Fetch data&lt;/td&gt;&lt;td&gt;GET /users → Get all users&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;&lt;td&gt;&lt;strong&gt;POST&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;Create new data&lt;/td&gt;&lt;td&gt;POST /users → Create new user&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;&lt;td&gt;&lt;strong&gt;PUT&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;Update ALL data&lt;/td&gt;&lt;td&gt;PUT /users/1 → Replace user 1&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;&lt;td&gt;&lt;strong&gt;PATCH&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;Update SOME data&lt;/td&gt;&lt;td&gt;PATCH /users/1 → Update name only&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;&lt;td&gt;&lt;strong&gt;DELETE&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;Remove data&lt;/td&gt;&lt;td&gt;DELETE /users/1 → Delete user 1&lt;/td&gt;&lt;/tr&gt;
-&lt;/table&gt;
+<table>
+<tr><th>Method</th><th>What It Does</th><th>Example</th></tr>
+<tr><td><strong>GET</strong></td><td>Read/Fetch data</td><td>GET /users → Get all users</td></tr>
+<tr><td><strong>POST</strong></td><td>Create new data</td><td>POST /users → Create new user</td></tr>
+<tr><td><strong>PUT</strong></td><td>Update ALL data</td><td>PUT /users/1 → Replace user 1</td></tr>
+<tr><td><strong>PATCH</strong></td><td>Update SOME data</td><td>PATCH /users/1 → Update name only</td></tr>
+<tr><td><strong>DELETE</strong></td><td>Remove data</td><td>DELETE /users/1 → Delete user 1</td></tr>
+</table>
 
-&lt;p&gt;&lt;strong&gt;Real-Life Analogy - Library Book:&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;GET&lt;/strong&gt; = Read the book&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;POST&lt;/strong&gt; = Donate a new book&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;PUT&lt;/strong&gt; = Replace the entire book&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;PATCH&lt;/strong&gt; = Fix a typo in the book&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;DELETE&lt;/strong&gt; = Remove the book from library&lt;/li&gt;
-&lt;/ul&gt;
+<p><strong>Real-Life Analogy - Library Book:</strong></p>
+<ul>
+<li><strong>GET</strong> = Read the book</li>
+<li><strong>POST</strong> = Donate a new book</li>
+<li><strong>PUT</strong> = Replace the entire book</li>
+<li><strong>PATCH</strong> = Fix a typo in the book</li>
+<li><strong>DELETE</strong> = Remove the book from library</li>
+</ul>
 
-&lt;hr&gt;
-&lt;p&gt;&lt;strong&gt;📋 Code Example:&lt;/strong&gt;&lt;/p&gt;
-&lt;pre&gt;
+<hr>
+<p><strong>📋 Code Example:</strong></p>
+<pre>
 // Same endpoint (/users), different methods = different actions!
 
 // GET /users - Fetch all users
-app.get('/users', (req, res) =&gt; {
+app.get('/users', (req, res) => {
     res.json(allUsers);
 });
 
 // POST /users - Create a new user
-app.post('/users', (req, res) =&gt; {
+app.post('/users', (req, res) => {
     const newUser = req.body;
     users.push(newUser);
     res.json({ message: 'User created!' });
 });
 
 // DELETE /users/5 - Delete user with ID 5
-app.delete('/users/:id', (req, res) =&gt; {
+app.delete('/users/:id', (req, res) => {
     const userId = req.params.id;
     // delete user logic
     res.json({ message: 'User deleted!' });
 });
-&lt;/pre&gt;
+</pre>
 `
   },
 
   // ========== FIRST SERVER ==========
   "Creating Your First Server": {
     concept: `
-&lt;p&gt;&lt;strong&gt;🖥️ Building Your First Node.js Server&lt;/strong&gt;&lt;/p&gt;
+<p><strong>🖥️ Building Your First Node.js Server</strong></p>
 
-&lt;p&gt;A server is just a program that waits for requests and sends back responses. When you type a website URL, you're sending a request to a server, and it responds with the webpage.&lt;/p&gt;
+<p>A server is just a program that waits for requests and sends back responses. When you type a website URL, you're sending a request to a server, and it responds with the webpage.</p>
 
-&lt;p&gt;&lt;strong&gt;Let's build one step by step:&lt;/strong&gt;&lt;/p&gt;
+<p><strong>Let's build one step by step:</strong></p>
 
-&lt;p&gt;&lt;strong&gt;Step 1: Create a file called server.js&lt;/strong&gt;&lt;/p&gt;
-&lt;pre&gt;
+<p><strong>Step 1: Create a file called server.js</strong></p>
+<pre>
 // Import the built-in 'http' module
 // Node.js comes with this - no installation needed!
 const http = require('http');
 
 // Create a server
 // This function runs EVERY TIME someone visits our server
-const server = http.createServer((request, response) =&gt; {
+const server = http.createServer((request, response) => {
     // Set the response header (what type of content we're sending)
     response.writeHead(200, { 'Content-Type': 'text/plain' });
     
@@ -202,34 +202,34 @@ const server = http.createServer((request, response) =&gt; {
 
 // Start the server on port 3000
 // Port = like an apartment number for your computer
-server.listen(3000, () =&gt; {
+server.listen(3000, () => {
     console.log('Server is running at http://localhost:3000');
 });
-&lt;/pre&gt;
+</pre>
 
-&lt;p&gt;&lt;strong&gt;Step 2: Run it!&lt;/strong&gt;&lt;/p&gt;
-&lt;pre&gt;
+<p><strong>Step 2: Run it!</strong></p>
+<pre>
 node server.js
-&lt;/pre&gt;
+</pre>
 
-&lt;p&gt;&lt;strong&gt;Step 3: Visit http://localhost:3000 in your browser!&lt;/strong&gt;&lt;/p&gt;
+<p><strong>Step 3: Visit http://localhost:3000 in your browser!</strong></p>
 
-&lt;hr&gt;
-&lt;p&gt;&lt;strong&gt;Understanding Each Part:&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;require('http')&lt;/code&gt; - Loads Node's built-in HTTP module&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;createServer()&lt;/code&gt; - Creates a server that handles requests&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;request&lt;/code&gt; - Contains info about incoming request (URL, method, etc.)&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;response&lt;/code&gt; - Used to send data back to the client&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;listen(3000)&lt;/code&gt; - Starts server on port 3000&lt;/li&gt;
-&lt;/ul&gt;
+<hr>
+<p><strong>Understanding Each Part:</strong></p>
+<ul>
+<li><code>require('http')</code> - Loads Node's built-in HTTP module</li>
+<li><code>createServer()</code> - Creates a server that handles requests</li>
+<li><code>request</code> - Contains info about incoming request (URL, method, etc.)</li>
+<li><code>response</code> - Used to send data back to the client</li>
+<li><code>listen(3000)</code> - Starts server on port 3000</li>
+</ul>
 
-&lt;hr&gt;
-&lt;p&gt;&lt;strong&gt;📋 Handling Different URLs:&lt;/strong&gt;&lt;/p&gt;
-&lt;pre&gt;
+<hr>
+<p><strong>📋 Handling Different URLs:</strong></p>
+<pre>
 const http = require('http');
 
-const server = http.createServer((req, res) =&gt; {
+const server = http.createServer((req, res) => {
     // Check which URL the user is visiting
     if (req.url === '/') {
         res.end('Home Page');
@@ -244,35 +244,35 @@ const server = http.createServer((req, res) =&gt; {
 });
 
 server.listen(3000);
-&lt;/pre&gt;
+</pre>
 
-&lt;p&gt;&lt;strong&gt;This is basic but tedious!&lt;/strong&gt; That's why we use Express.js - it makes routing much easier (covered in Express section).&lt;/p&gt;
+<p><strong>This is basic but tedious!</strong> That's why we use Express.js - it makes routing much easier (covered in Express section).</p>
 `
   },
 
   // ========== NPM BASICS ==========
   "NPM (Node Package Manager)": {
     concept: `
-&lt;p&gt;&lt;strong&gt;📦 NPM Explained Simply&lt;/strong&gt;&lt;/p&gt;
+<p><strong>📦 NPM Explained Simply</strong></p>
 
-&lt;p&gt;NPM stands for &lt;strong&gt;Node Package Manager&lt;/strong&gt;. Think of it as an app store for JavaScript code. Instead of writing everything from scratch, you can download pre-made packages (libraries) that other developers created.&lt;/p&gt;
+<p>NPM stands for <strong>Node Package Manager</strong>. Think of it as an app store for JavaScript code. Instead of writing everything from scratch, you can download pre-made packages (libraries) that other developers created.</p>
 
-&lt;p&gt;&lt;strong&gt;Real-Life Analogy:&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;Imagine you're baking a cake. You COULD grow your own wheat, milk your own cow, and raise chickens for eggs. OR you could just buy flour, milk, and eggs from the store! NPM is like the grocery store - you get ingredients (packages) that others have prepared.&lt;/p&gt;
+<p><strong>Real-Life Analogy:</strong></p>
+<p>Imagine you're baking a cake. You COULD grow your own wheat, milk your own cow, and raise chickens for eggs. OR you could just buy flour, milk, and eggs from the store! NPM is like the grocery store - you get ingredients (packages) that others have prepared.</p>
 
-&lt;p&gt;&lt;strong&gt;Popular NPM Packages:&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;express&lt;/strong&gt; - Web framework for building APIs&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;mongoose&lt;/strong&gt; - Connect to MongoDB database&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;bcrypt&lt;/strong&gt; - Hash passwords securely&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;jsonwebtoken&lt;/strong&gt; - Create login tokens&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;dotenv&lt;/strong&gt; - Manage environment variables&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;cors&lt;/strong&gt; - Handle cross-origin requests&lt;/li&gt;
-&lt;/ul&gt;
+<p><strong>Popular NPM Packages:</strong></p>
+<ul>
+<li><strong>express</strong> - Web framework for building APIs</li>
+<li><strong>mongoose</strong> - Connect to MongoDB database</li>
+<li><strong>bcrypt</strong> - Hash passwords securely</li>
+<li><strong>jsonwebtoken</strong> - Create login tokens</li>
+<li><strong>dotenv</strong> - Manage environment variables</li>
+<li><strong>cors</strong> - Handle cross-origin requests</li>
+</ul>
 
-&lt;hr&gt;
-&lt;p&gt;&lt;strong&gt;📋 Essential NPM Commands:&lt;/strong&gt;&lt;/p&gt;
-&lt;pre&gt;
+<hr>
+<p><strong>📋 Essential NPM Commands:</strong></p>
+<pre>
 # Initialize a new project (creates package.json)
 npm init
 
@@ -299,11 +299,11 @@ npm update
 # Run a script from package.json
 npm run dev
 npm start              # special - doesn't need 'run'
-&lt;/pre&gt;
+</pre>
 
-&lt;hr&gt;
-&lt;p&gt;&lt;strong&gt;Understanding package.json:&lt;/strong&gt;&lt;/p&gt;
-&lt;pre&gt;
+<hr>
+<p><strong>Understanding package.json:</strong></p>
+<pre>
 {
     "name": "my-app",
     "version": "1.0.0",
@@ -325,45 +325,45 @@ npm start              # special - doesn't need 'run'
         "nodemon": "^2.0.22"
     }
 }
-&lt;/pre&gt;
+</pre>
 
-&lt;p&gt;&lt;strong&gt;Key Points:&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;dependencies&lt;/code&gt; = Packages needed to RUN the app&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;devDependencies&lt;/code&gt; = Packages needed only during development&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;scripts&lt;/code&gt; = Custom commands you can run with npm run&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;node_modules&lt;/code&gt; folder = Where packages are installed (DON'T commit to Git!)&lt;/li&gt;
-&lt;/ul&gt;
+<p><strong>Key Points:</strong></p>
+<ul>
+<li><code>dependencies</code> = Packages needed to RUN the app</li>
+<li><code>devDependencies</code> = Packages needed only during development</li>
+<li><code>scripts</code> = Custom commands you can run with npm run</li>
+<li><code>node_modules</code> folder = Where packages are installed (DON'T commit to Git!)</li>
+</ul>
 `
   },
 
   // ========== ENVIRONMENT VARIABLES ==========
   "Environment Variables": {
     concept: `
-&lt;p&gt;&lt;strong&gt;🔐 Environment Variables Explained&lt;/strong&gt;&lt;/p&gt;
+<p><strong>🔐 Environment Variables Explained</strong></p>
 
-&lt;p&gt;Environment variables are like secret settings that your app can read. They're perfect for storing sensitive information that shouldn't be in your code.&lt;/p&gt;
+<p>Environment variables are like secret settings that your app can read. They're perfect for storing sensitive information that shouldn't be in your code.</p>
 
-&lt;p&gt;&lt;strong&gt;Why Do We Need Them?&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;Imagine you have a database password in your code:&lt;/p&gt;
-&lt;pre&gt;
+<p><strong>Why Do We Need Them?</strong></p>
+<p>Imagine you have a database password in your code:</p>
+<pre>
 // BAD! Never do this!
 const dbPassword = "my_secret_password_123";
-&lt;/pre&gt;
-&lt;p&gt;If you share this code on GitHub, everyone can see your password! Environment variables solve this.&lt;/p&gt;
+</pre>
+<p>If you share this code on GitHub, everyone can see your password! Environment variables solve this.</p>
 
-&lt;p&gt;&lt;strong&gt;Common Things Stored in Environment Variables:&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Database connection strings&lt;/li&gt;
-&lt;li&gt;API keys (Google, Stripe, etc.)&lt;/li&gt;
-&lt;li&gt;JWT secrets&lt;/li&gt;
-&lt;li&gt;Port numbers&lt;/li&gt;
-&lt;li&gt;Development vs Production mode&lt;/li&gt;
-&lt;/ul&gt;
+<p><strong>Common Things Stored in Environment Variables:</strong></p>
+<ul>
+<li>Database connection strings</li>
+<li>API keys (Google, Stripe, etc.)</li>
+<li>JWT secrets</li>
+<li>Port numbers</li>
+<li>Development vs Production mode</li>
+</ul>
 
-&lt;hr&gt;
-&lt;p&gt;&lt;strong&gt;📋 How to Use Environment Variables:&lt;/strong&gt;&lt;/p&gt;
-&lt;pre&gt;
+<hr>
+<p><strong>📋 How to Use Environment Variables:</strong></p>
+<pre>
 // Step 1: Install dotenv
 npm install dotenv
 
@@ -383,36 +383,36 @@ const dbUrl = process.env.DATABASE_URL;
 const secret = process.env.JWT_SECRET;
 
 console.log(port);  // 3000
-&lt;/pre&gt;
+</pre>
 
-&lt;hr&gt;
-&lt;p&gt;&lt;strong&gt;⚠️ CRITICAL: Add .env to .gitignore!&lt;/strong&gt;&lt;/p&gt;
-&lt;pre&gt;
+<hr>
+<p><strong>⚠️ CRITICAL: Add .env to .gitignore!</strong></p>
+<pre>
 // .gitignore file
 node_modules/
 .env
-&lt;/pre&gt;
+</pre>
 
-&lt;p&gt;&lt;strong&gt;Create a .env.example for others:&lt;/strong&gt;&lt;/p&gt;
-&lt;pre&gt;
+<p><strong>Create a .env.example for others:</strong></p>
+<pre>
 // .env.example (commit this to Git)
 PORT=3000
 DATABASE_URL=your_database_url_here
 JWT_SECRET=your_secret_here
-&lt;/pre&gt;
+</pre>
 `
   },
 
   // ========== FILE SYSTEM ==========
   "File System Operations": {
     concept: `
-&lt;p&gt;&lt;strong&gt;📁 Working with Files in Node.js&lt;/strong&gt;&lt;/p&gt;
+<p><strong>📁 Working with Files in Node.js</strong></p>
 
-&lt;p&gt;Node.js can read, write, and manage files on your computer. This is something JavaScript in browsers CAN'T do (for security reasons). Node's &lt;code&gt;fs&lt;/code&gt; (file system) module handles all file operations.&lt;/p&gt;
+<p>Node.js can read, write, and manage files on your computer. This is something JavaScript in browsers CAN'T do (for security reasons). Node's <code>fs</code> (file system) module handles all file operations.</p>
 
-&lt;hr&gt;
-&lt;p&gt;&lt;strong&gt;📋 Common File Operations:&lt;/strong&gt;&lt;/p&gt;
-&lt;pre&gt;
+<hr>
+<p><strong>📋 Common File Operations:</strong></p>
+<pre>
 const fs = require('fs');
 
 // ====== READING FILES ======
@@ -422,7 +422,7 @@ const data = fs.readFileSync('file.txt', 'utf8');
 console.log(data);
 
 // Asynchronous (non-blocking, better for servers)
-fs.readFile('file.txt', 'utf8', (err, data) =&gt; {
+fs.readFile('file.txt', 'utf8', (err, data) => {
     if (err) {
         console.log('Error:', err);
         return;
@@ -444,7 +444,7 @@ fs.writeFileSync('output.txt', 'Hello World!');
 fs.appendFileSync('log.txt', 'New log entry\\n');
 
 // Async write
-fs.writeFile('output.txt', 'Hello!', (err) =&gt; {
+fs.writeFile('output.txt', 'Hello!', (err) => {
     if (err) throw err;
     console.log('File saved!');
 });
@@ -466,11 +466,11 @@ fs.mkdirSync('new-folder');
 // Read directory contents
 const files = fs.readdirSync('./');
 console.log(files);  // ['file1.txt', 'file2.txt', ...]
-&lt;/pre&gt;
+</pre>
 
-&lt;hr&gt;
-&lt;p&gt;&lt;strong&gt;Real-World Example - Simple Logger:&lt;/strong&gt;&lt;/p&gt;
-&lt;pre&gt;
+<hr>
+<p><strong>Real-World Example - Simple Logger:</strong></p>
+<pre>
 const fs = require('fs');
 
 function logMessage(message) {
@@ -483,45 +483,45 @@ function logMessage(message) {
 logMessage('User logged in');
 logMessage('User viewed products');
 logMessage('User made purchase');
-&lt;/pre&gt;
+</pre>
 `
   },
 
   // ========== EVENT LOOP ==========
   "Event Loop (How Node.js Works)": {
     concept: `
-&lt;p&gt;&lt;strong&gt;🔄 The Event Loop - Node's Secret Sauce&lt;/strong&gt;&lt;/p&gt;
+<p><strong>🔄 The Event Loop - Node's Secret Sauce</strong></p>
 
-&lt;p&gt;This is what makes Node.js special and FAST. Understanding this helps in interviews and writing better code.&lt;/p&gt;
+<p>This is what makes Node.js special and FAST. Understanding this helps in interviews and writing better code.</p>
 
-&lt;p&gt;&lt;strong&gt;The Problem with Traditional Servers:&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;Imagine a restaurant with only 1 waiter. If that waiter takes an order and waits in the kitchen until food is ready, no other customers can be served! That's how some servers work - they BLOCK while waiting.&lt;/p&gt;
+<p><strong>The Problem with Traditional Servers:</strong></p>
+<p>Imagine a restaurant with only 1 waiter. If that waiter takes an order and waits in the kitchen until food is ready, no other customers can be served! That's how some servers work - they BLOCK while waiting.</p>
 
-&lt;p&gt;&lt;strong&gt;How Node.js is Different:&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;Node.js is like a smart waiter who:&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;Takes your order&lt;/li&gt;
-&lt;li&gt;Gives it to the kitchen&lt;/li&gt;
-&lt;li&gt;Immediately goes to take the next customer's order&lt;/li&gt;
-&lt;li&gt;When kitchen says "food ready!", waiter delivers it&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;The waiter NEVER waits idly. This is &lt;strong&gt;non-blocking, asynchronous&lt;/strong&gt; behavior!&lt;/p&gt;
+<p><strong>How Node.js is Different:</strong></p>
+<p>Node.js is like a smart waiter who:</p>
+<ol>
+<li>Takes your order</li>
+<li>Gives it to the kitchen</li>
+<li>Immediately goes to take the next customer's order</li>
+<li>When kitchen says "food ready!", waiter delivers it</li>
+</ol>
+<p>The waiter NEVER waits idly. This is <strong>non-blocking, asynchronous</strong> behavior!</p>
 
-&lt;p&gt;&lt;strong&gt;The Event Loop in Simple Terms:&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;The Event Loop is like a traffic controller that:&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;Runs your synchronous code first&lt;/li&gt;
-&lt;li&gt;Sends async operations (file reads, API calls) to be handled separately&lt;/li&gt;
-&lt;li&gt;When they complete, puts their callbacks in a queue&lt;/li&gt;
-&lt;li&gt;Executes callbacks when main code is done&lt;/li&gt;
-&lt;/ol&gt;
+<p><strong>The Event Loop in Simple Terms:</strong></p>
+<p>The Event Loop is like a traffic controller that:</p>
+<ol>
+<li>Runs your synchronous code first</li>
+<li>Sends async operations (file reads, API calls) to be handled separately</li>
+<li>When they complete, puts their callbacks in a queue</li>
+<li>Executes callbacks when main code is done</li>
+</ol>
 
-&lt;hr&gt;
-&lt;p&gt;&lt;strong&gt;📋 See It In Action:&lt;/strong&gt;&lt;/p&gt;
-&lt;pre&gt;
+<hr>
+<p><strong>📋 See It In Action:</strong></p>
+<pre>
 console.log('1 - Start');
 
-setTimeout(() =&gt; {
+setTimeout(() => {
     console.log('2 - Timeout callback');
 }, 0);
 
@@ -536,33 +536,33 @@ console.log('3 - End');
 // - Sync code (1, 3) runs first
 // - setTimeout callback goes to queue
 // - Event loop runs callback after sync code
-&lt;/pre&gt;
+</pre>
 
-&lt;p&gt;&lt;strong&gt;Why This Matters:&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Node can handle thousands of connections with one thread&lt;/li&gt;
-&lt;li&gt;It never waits idly for I/O operations&lt;/li&gt;
-&lt;li&gt;Perfect for I/O heavy applications (APIs, real-time apps)&lt;/li&gt;
-&lt;/ul&gt;
+<p><strong>Why This Matters:</strong></p>
+<ul>
+<li>Node can handle thousands of connections with one thread</li>
+<li>It never waits idly for I/O operations</li>
+<li>Perfect for I/O heavy applications (APIs, real-time apps)</li>
+</ul>
 `
   },
 
   // ========== MODULES ==========
-  "Modules (require &amp; import)": {
+  "Modules (require & import)": {
     concept: `
-&lt;p&gt;&lt;strong&gt;📦 Understanding Modules in Node.js&lt;/strong&gt;&lt;/p&gt;
+<p><strong>📦 Understanding Modules in Node.js</strong></p>
 
-&lt;p&gt;Modules let you split your code into separate files and reuse code. Instead of one giant file, you have organized, manageable pieces.&lt;/p&gt;
+<p>Modules let you split your code into separate files and reuse code. Instead of one giant file, you have organized, manageable pieces.</p>
 
-&lt;p&gt;&lt;strong&gt;Two Module Systems:&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;CommonJS&lt;/strong&gt; (older): Uses &lt;code&gt;require()&lt;/code&gt; and &lt;code&gt;module.exports&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;ES Modules&lt;/strong&gt; (newer): Uses &lt;code&gt;import&lt;/code&gt; and &lt;code&gt;export&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
+<p><strong>Two Module Systems:</strong></p>
+<ul>
+<li><strong>CommonJS</strong> (older): Uses <code>require()</code> and <code>module.exports</code></li>
+<li><strong>ES Modules</strong> (newer): Uses <code>import</code> and <code>export</code></li>
+</ul>
 
-&lt;hr&gt;
-&lt;p&gt;&lt;strong&gt;📋 CommonJS (Default in Node.js):&lt;/strong&gt;&lt;/p&gt;
-&lt;pre&gt;
+<hr>
+<p><strong>📋 CommonJS (Default in Node.js):</strong></p>
+<pre>
 // ===== math.js (exporting) =====
 function add(a, b) {
     return a + b;
@@ -587,11 +587,11 @@ const { add, subtract } = require('./math');
 const add = require('./math');
 
 console.log(add(5, 3));  // 8
-&lt;/pre&gt;
+</pre>
 
-&lt;hr&gt;
-&lt;p&gt;&lt;strong&gt;📋 ES Modules (Modern):&lt;/strong&gt;&lt;/p&gt;
-&lt;pre&gt;
+<hr>
+<p><strong>📋 ES Modules (Modern):</strong></p>
+<pre>
 // To use ES modules, add to package.json:
 // "type": "module"
 
@@ -615,55 +615,55 @@ import multiply, { add, subtract } from './math.js';
 
 console.log(add(5, 3));       // 8
 console.log(multiply(4, 2));  // 8
-&lt;/pre&gt;
+</pre>
 
-&lt;hr&gt;
-&lt;p&gt;&lt;strong&gt;Built-in Modules:&lt;/strong&gt;&lt;/p&gt;
-&lt;pre&gt;
+<hr>
+<p><strong>Built-in Modules:</strong></p>
+<pre>
 // Node.js comes with these - no install needed!
 const fs = require('fs');       // File system
 const path = require('path');   // File paths
 const http = require('http');   // Create servers
 const crypto = require('crypto'); // Encryption
 const os = require('os');       // Operating system info
-&lt;/pre&gt;
+</pre>
 `
   },
 
   // ========== NODE.JS INTERVIEW QUESTIONS ==========
   "Node.js Interview Questions": {
     concept: `
-&lt;p&gt;&lt;strong&gt;❓ Common Node.js Interview Questions&lt;/strong&gt;&lt;/p&gt;
+<p><strong>❓ Common Node.js Interview Questions</strong></p>
 
-&lt;p&gt;&lt;strong&gt;Q1: What is Node.js?&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;Node.js is a JavaScript runtime built on Chrome's V8 engine that lets you run JavaScript outside the browser. It's used for building server-side applications, APIs, and command-line tools.&lt;/p&gt;
+<p><strong>Q1: What is Node.js?</strong></p>
+<p>Node.js is a JavaScript runtime built on Chrome's V8 engine that lets you run JavaScript outside the browser. It's used for building server-side applications, APIs, and command-line tools.</p>
 
-&lt;p&gt;&lt;strong&gt;Q2: What is the difference between Node.js and JavaScript?&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;JavaScript is a programming language. Node.js is a runtime environment that lets you execute JavaScript on the server. JavaScript in browsers can manipulate DOM; Node.js can access file systems and create servers.&lt;/p&gt;
+<p><strong>Q2: What is the difference between Node.js and JavaScript?</strong></p>
+<p>JavaScript is a programming language. Node.js is a runtime environment that lets you execute JavaScript on the server. JavaScript in browsers can manipulate DOM; Node.js can access file systems and create servers.</p>
 
-&lt;p&gt;&lt;strong&gt;Q3: What is the Event Loop?&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;The Event Loop is what allows Node.js to perform non-blocking I/O operations. It continuously checks if there are callbacks to execute and runs them when the main thread is free.&lt;/p&gt;
+<p><strong>Q3: What is the Event Loop?</strong></p>
+<p>The Event Loop is what allows Node.js to perform non-blocking I/O operations. It continuously checks if there are callbacks to execute and runs them when the main thread is free.</p>
 
-&lt;p&gt;&lt;strong&gt;Q4: What is NPM?&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;NPM (Node Package Manager) is a package manager for JavaScript that lets you install, share, and manage dependencies. It comes bundled with Node.js.&lt;/p&gt;
+<p><strong>Q4: What is NPM?</strong></p>
+<p>NPM (Node Package Manager) is a package manager for JavaScript that lets you install, share, and manage dependencies. It comes bundled with Node.js.</p>
 
-&lt;p&gt;&lt;strong&gt;Q5: What is the difference between require() and import?&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;require() is CommonJS syntax (older, synchronous, default in Node). import is ES Modules syntax (newer, supports async loading, needs "type": "module" in package.json).&lt;/p&gt;
+<p><strong>Q5: What is the difference between require() and import?</strong></p>
+<p>require() is CommonJS syntax (older, synchronous, default in Node). import is ES Modules syntax (newer, supports async loading, needs "type": "module" in package.json).</p>
 
-&lt;p&gt;&lt;strong&gt;Q6: What are callbacks?&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;Callbacks are functions passed as arguments to other functions, executed after an async operation completes. They're the original way Node.js handled async code before Promises.&lt;/p&gt;
+<p><strong>Q6: What are callbacks?</strong></p>
+<p>Callbacks are functions passed as arguments to other functions, executed after an async operation completes. They're the original way Node.js handled async code before Promises.</p>
 
-&lt;p&gt;&lt;strong&gt;Q7: What is callback hell and how to avoid it?&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;Callback hell is deeply nested callbacks that make code hard to read. Avoid it using Promises, async/await, or breaking code into named functions.&lt;/p&gt;
+<p><strong>Q7: What is callback hell and how to avoid it?</strong></p>
+<p>Callback hell is deeply nested callbacks that make code hard to read. Avoid it using Promises, async/await, or breaking code into named functions.</p>
 
-&lt;p&gt;&lt;strong&gt;Q8: What is middleware?&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;Middleware is a function that runs between receiving a request and sending a response. It can modify req/res objects, run authentication, logging, etc.&lt;/p&gt;
+<p><strong>Q8: What is middleware?</strong></p>
+<p>Middleware is a function that runs between receiving a request and sending a response. It can modify req/res objects, run authentication, logging, etc.</p>
 
-&lt;p&gt;&lt;strong&gt;Q9: What is the difference between process.nextTick() and setImmediate()?&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;process.nextTick() runs before the next event loop iteration begins. setImmediate() runs in the next iteration. nextTick has higher priority.&lt;/p&gt;
+<p><strong>Q9: What is the difference between process.nextTick() and setImmediate()?</strong></p>
+<p>process.nextTick() runs before the next event loop iteration begins. setImmediate() runs in the next iteration. nextTick has higher priority.</p>
 
-&lt;p&gt;&lt;strong&gt;Q10: How do you handle errors in Node.js?&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;Using try-catch for sync code, .catch() for Promises, error-first callbacks, and centralized error handling middleware in Express.&lt;/p&gt;
+<p><strong>Q10: How do you handle errors in Node.js?</strong></p>
+<p>Using try-catch for sync code, .catch() for Promises, error-first callbacks, and centralized error handling middleware in Express.</p>
 `
   }
 };

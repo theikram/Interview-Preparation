@@ -735,234 +735,284 @@ fetch('/api/profile', {
 `
     }
 ,
-
-    // ========== ADDITIONAL INTERVIEW QUESTIONS ==========
-    "SQL vs NoSQL": {
+    // ========== 9 MERN INTERVIEW QUESTIONS ==========
+    "1. SQL vs NoSQL": {
         concept: `
-<p><strong>🗄️ SQL vs NoSQL - Which to Choose?</strong></p>
+<p><strong>🗄️ SQL vs NoSQL - Simple Explanation</strong></p>
 
-<table>
-<tr><th>Feature</th><th>SQL (MySQL, PostgreSQL)</th><th>NoSQL (MongoDB)</th></tr>
-<tr><td>Structure</td><td>Fixed schema (tables, rows)</td><td>Flexible (documents, JSON)</td></tr>
-<tr><td>Relationships</td><td>JOINs between tables</td><td>Embedded or referenced</td></tr>
-<tr><td>Scaling</td><td>Vertical (bigger server)</td><td>Horizontal (more servers)</td></tr>
-<tr><td>Best For</td><td>Complex queries, transactions</td><td>Flexible data, fast development</td></tr>
-</table>
-
-<p><strong>Why MongoDB fits MERN:</strong></p>
+<p><strong>SQL (MySQL, PostgreSQL):</strong></p>
 <ul>
-<li>✅ JSON everywhere (MongoDB stores JSON, Express/React use JSON)</li>
-<li>✅ Flexible schema - easy to change structure during development</li>
-<li>✅ JavaScript-friendly - Mongoose uses JS syntax</li>
-<li>✅ Fast prototyping - no need to design complex schemas upfront</li>
+<li>Data in <strong>tables</strong> (rows & columns like Excel)</li>
+<li>Fixed structure - define before adding data</li>
+<li>Good for: Banking, complex relationships</li>
 </ul>
 
-<p><strong>Example Comparison:</strong></p>
-<pre>
-// SQL (Multiple tables with JOINs)
-users table: id, name, email
-posts table: id, user_id, title, content
+<p><strong>NoSQL (MongoDB):</strong></p>
+<ul>
+<li>Data as <strong>documents</strong> (JSON objects)</li>
+<li>Flexible - add any fields anytime</li>
+<li>Good for: Fast development, changing data</li>
+</ul>
 
-SELECT users.name, posts.title 
-FROM users 
-JOIN posts ON users.id = posts.user_id;
+<p><strong>Example:</strong></p>
+<pre class="language-javascript">
+// SQL Table
+| id | name | email         |
+|----|------|---------------|
+| 1  | Ali  | ali@mail.com  |
 
-// MongoDB (Embedded document)
+// MongoDB Document
 {
   "_id": 1,
   "name": "Ali",
-  "email": "ali@test.com",
-  "posts": [
-    { "title": "My First Post", "content": "..." },
-    { "title": "Second Post", "content": "..." }
-  ]
+  "email": "ali@mail.com",
+  "skills": ["React", "Node"]  // Flexible!
 }
 </pre>
+
+<p><strong>Why MongoDB for MERN?</strong> JSON everywhere - MongoDB stores JSON, Express/React use JSON!</p>
 `
     },
 
-    "Fibonacci & Patterns": {
+    "2. REST vs GraphQL": {
         concept: `
-<p><strong>🔢 Fibonacci Sequence - Easy Explanation</strong></p>
+<p><strong>🔌 REST vs GraphQL</strong></p>
 
-<p>Fibonacci: Each number is the sum of the previous two numbers.</p>
-<p>Sequence: 0, 1, 1, 2, 3, 5, 8, 13, 21...</p>
+<p><strong>REST:</strong> Many URLs, fixed responses</p>
+<p><strong>GraphQL:</strong> One URL, you pick what data</p>
 
-<p><strong>JavaScript Implementation:</strong></p>
-<pre>
-// Method 1: Simple Loop (Best for beginners)
-function fibonacci(n) {
-    if (n <= 1) return n;
-    
-    let a = 0, b = 1;
-    
-    for (let i = 2; i <= n; i++) {
-        let temp = a + b;  // Add previous two
-        a = b;             // Move forward
-        b = temp;
-    }
-    
-    return b;
+<pre class="language-javascript">
+// REST - Multiple requests
+GET /api/user/1     // Returns everything
+GET /api/user/1/posts  // Separate request
+
+// GraphQL - One request, only what you need
+query {
+  user(id: 1) {
+    name
+    email
+  }
 }
-
-console.log(fibonacci(6));  // 8
-// Steps: 0, 1, 1, 2, 3, 5, 8
-
-// Method 2: Recursive (Elegant but slower)
-function fibRecursive(n) {
-    if (n <= 1) return n;
-    return fibRecursive(n - 1) + fibRecursive(n - 2);
-}
-
-// Print first N numbers
-function printFibonacci(n) {
-    for (let i = 0; i < n; i++) {
-        console.log(fibonacci(i));
-    }
-}
-
-printFibonacci(7);  // 0, 1, 1, 2, 3, 5, 8
 </pre>
 
-<p><strong>Python Implementation:</strong></p>
-<pre>
-# Method 1: Simple Loop
-def fibonacci(n):
-    if n <= 1:
-        return n
-    
-    a, b = 0, 1
-    
-    for i in range(2, n + 1):
-        a, b = b, a + b  # Swap and add
-    
-    return b
-
-print(fibonacci(6))  # 8
-
-# Method 2: Recursive
-def fib_recursive(n):
-    if n <= 1:
-        return n
-    return fib_recursive(n - 1) + fib_recursive(n - 2)
-
-# Print first N numbers
-def print_fibonacci(n):
-    for i in range(n):
-        print(fibonacci(i), end=" ")
-
-print_fibonacci(7)  # 0 1 1 2 3 5 8
-</pre>
-
-<p><strong>📐 Pattern Printing</strong></p>
-
-<p><strong>Pattern 1: Right Triangle</strong></p>
-<pre>
-// JavaScript
-function printTriangle(n) {
-    for (let i = 1; i <= n; i++) {
-        let row = '';
-        for (let j = 1; j <= i; j++) {
-            row += '* ';
-        }
-        console.log(row);
-    }
-}
-
-printTriangle(5);
-// Output:
-// * 
-// * * 
-// * * * 
-// * * * * 
-// * * * * * 
-
-# Python
-def print_triangle(n):
-    for i in range(1, n + 1):
-        print('* ' * i)
-
-print_triangle(5)
-</pre>
-
-<p><strong>Pattern 2: Pyramid</strong></p>
-<pre>
-// JavaScript
-function printPyramid(n) {
-    for (let i = 1; i <= n; i++) {
-        let spaces = ' '.repeat(n - i);
-        let stars = '* '.repeat(i);
-        console.log(spaces + stars);
-    }
-}
-
-printPyramid(5);
-// Output:
-//     * 
-//    * * 
-//   * * * 
-//  * * * * 
-// * * * * * 
-
-# Python
-def print_pyramid(n):
-    for i in range(1, n + 1):
-        print(' ' * (n - i) + '* ' * i)
-
-print_pyramid(5)
-</pre>
-
-<p><strong>Pattern 3: Number Triangle</strong></p>
-<pre>
-// JavaScript
-function printNumberTriangle(n) {
-    for (let i = 1; i <= n; i++) {
-        let row = '';
-        for (let j = 1; j <= i; j++) {
-            row += j + ' ';
-        }
-        console.log(row);
-    }
-}
-
-printNumberTriangle(5);
-// Output:
-// 1 
-// 1 2 
-// 1 2 3 
-// 1 2 3 4 
-// 1 2 3 4 5 
-
-# Python
-def print_number_triangle(n):
-    for i in range(1, n + 1):
-        for j in range(1, i + 1):
-            print(j, end=' ')
-        print()
-
-print_number_triangle(5)
-</pre>
+<p><strong>Use REST:</strong> Simple apps, caching</p>
+<p><strong>Use GraphQL:</strong> Mobile apps, complex data</p>
 `
     },
 
-    "More Interview Questions": {
+    "3. What is Express.js?": {
         concept: `
-<p><strong>📚 Additional MERN Questions</strong></p>
+<p><strong>⚡ Express.js - Makes Node.js Easy</strong></p>
 
-<p>See the complete list of 9 questions in the MERN Stack category including:</p>
+<pre class="language-javascript">
+// WITHOUT Express - Messy!
+http.createServer((req, res) => {
+  if (req.url === '/') res.end('Home');
+  if (req.url === '/about') res.end('About');
+}).listen(3000);
+
+// WITH Express - Clean!
+const app = express();
+app.get('/', (req, res) => res.send('Home'));
+app.get('/about', (req, res) => res.send('About'));
+app.listen(3000);
+</pre>
+
+<p><strong>Why Express?</strong></p>
 <ul>
-<li>SQL vs NoSQL</li>
-<li>REST vs GraphQL</li>
-<li>What is Express.js?</li>
-<li>How Middleware Works</li>
-<li>Callbacks vs Promises vs Async/Await</li>
-<li>What is Mongoose?</li>
-<li>Authentication & Authorization</li>
-<li>CRUD with MongoDB</li>
-<li>HTTP Status Codes</li>
+<li>✅ Easy routing: app.get(), app.post()</li>
+<li>✅ Middleware support</li>
+<li>✅ JSON handling built-in</li>
 </ul>
 `
     },
+
+    "4. How Middleware Works": {
+        concept: `
+<p><strong>🔗 Middleware = Checkpoints</strong></p>
+
+<p>Like security guards checking before you enter!</p>
+
+<pre class="language-javascript">
+Request → [Logger] → [Auth] → Route → Response
+
+// Logger middleware
+const logger = (req, res, next) => {
+  console.log(req.method, req.url);
+  next();  // Continue to next!
+};
+
+// Auth middleware  
+const auth = (req, res, next) => {
+  if (!req.headers.token) {
+    return res.status(401).send('Login first!');
+  }
+  next();
+};
+
+app.use(logger);  // All routes
+app.get('/profile', auth, handler);  // Specific route
+</pre>
+
+<p><strong>Key:</strong> Call <code>next()</code> to continue!</p>
+`
+    },
+
+    "5. Callbacks vs Promises vs Async/Await": {
+        concept: `
+<p><strong>⏱️ Handling Async Code</strong></p>
+
+<p><strong>Callbacks (Old) 😵</strong></p>
+<pre class="language-javascript">
+getData(function(a) {
+  getMore(a, function(b) {
+    // Callback Hell!
+  });
+});
+</pre>
+
+<p><strong>Promises (Better) 😊</strong></p>
+<pre class="language-javascript">
+getData()
+  .then(a => getMore(a))
+  .then(b => console.log(b))
+  .catch(err => console.log(err));
+</pre>
+
+<p><strong>Async/Await (Best!) 🎉</strong></p>
+<pre class="language-javascript">
+async function fetchData() {
+  try {
+    const a = await getData();
+    const b = await getMore(a);
+    console.log(b);
+  } catch (err) {
+    console.log(err);
+  }
+}
+</pre>
+
+<p><strong>Note:</strong> await only works inside async functions!</p>
+`
+    },
+
+    "6. What is Mongoose?": {
+        concept: `
+<p><strong>🔷 Mongoose = MongoDB + Rules</strong></p>
+
+<pre class="language-javascript">
+// Without Mongoose - No validation!
+db.users.insert({ name: 123, age: "abc" }); // Saves anyway!
+
+// With Mongoose - Has rules!
+const userSchema = new mongoose.Schema({
+  name: { type: String, required: true },
+  age: { type: Number, min: 0 }
+});
+
+const User = mongoose.model('User', userSchema);
+
+await User.create({ name: 123 });  // ❌ Error!
+await User.create({ name: "Ali" }); // ✅ Works!
+</pre>
+
+<p><strong>Benefits:</strong> Schema validation, easy CRUD, middleware</p>
+`
+    },
+
+    "7. Authentication Flow": {
+        concept: `
+<p><strong>🔐 Login Flow</strong></p>
+
+<ol>
+<li>User sends email + password</li>
+<li>Server checks with bcrypt</li>
+<li>Server creates JWT token</li>
+<li>User stores token</li>
+<li>User sends token with requests</li>
+</ol>
+
+<pre class="language-javascript">
+// Register
+const hash = await bcrypt.hash(password, 10);
+await User.create({ email, password: hash });
+
+// Login
+const user = await User.findOne({ email });
+const valid = await bcrypt.compare(password, user.password);
+if (valid) {
+  const token = jwt.sign({ id: user._id }, 'secret');
+  res.json({ token });
+}
+
+// Protected Route
+const auth = (req, res, next) => {
+  const token = req.headers.authorization?.split(' ')[1];
+  if (!token) return res.status(401).send('Login!');
+  req.user = jwt.verify(token, 'secret');
+  next();
+};
+</pre>
+`
+    },
+
+    "8. CRUD Operations": {
+        concept: `
+<p><strong>📝 CRUD = Create, Read, Update, Delete</strong></p>
+
+<table>
+<tr><th>CRUD</th><th>HTTP</th><th>Mongoose</th></tr>
+<tr><td>Create</td><td>POST</td><td>Model.create()</td></tr>
+<tr><td>Read</td><td>GET</td><td>Model.find()</td></tr>
+<tr><td>Update</td><td>PUT</td><td>findByIdAndUpdate()</td></tr>
+<tr><td>Delete</td><td>DELETE</td><td>findByIdAndDelete()</td></tr>
+</table>
+
+<pre class="language-javascript">
+// CREATE
+const user = await User.create(req.body);
+res.status(201).json(user);
+
+// READ
+const users = await User.find();
+res.json(users);
+
+// UPDATE  
+const user = await User.findByIdAndUpdate(id, data, { new: true });
+
+// DELETE
+await User.findByIdAndDelete(id);
+res.status(204).send();
+</pre>
+`
+    },
+
+    "9. HTTP Status Codes": {
+        concept: `
+<p><strong>📊 Status Codes Guide</strong></p>
+
+<table>
+<tr><th>Code</th><th>When</th></tr>
+<tr><td><strong>200</strong></td><td>OK - Success</td></tr>
+<tr><td><strong>201</strong></td><td>Created - New item</td></tr>
+<tr><td><strong>400</strong></td><td>Bad Request - Wrong data</td></tr>
+<tr><td><strong>401</strong></td><td>Unauthorized - Not logged in</td></tr>
+<tr><td><strong>403</strong></td><td>Forbidden - No permission</td></tr>
+<tr><td><strong>404</strong></td><td>Not Found</td></tr>
+<tr><td><strong>500</strong></td><td>Server Error</td></tr>
+</table>
+
+<pre class="language-javascript">
+res.status(200).json({ data });      // Success
+res.status(201).json({ newUser });   // Created
+res.status(400).json({ error: 'Email required!' });
+res.status(401).json({ error: 'Please login!' });
+res.status(404).json({ error: 'Not found!' });
+</pre>
+
+<p><strong>Remember:</strong> 2xx=Good, 4xx=Client error, 5xx=Server error</p>
+`
+    }
 
 };
 

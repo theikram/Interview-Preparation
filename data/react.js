@@ -1052,6 +1052,200 @@ function Form() {
 <p>Key optimization strategies: Use React.memo to prevent unnecessary re-renders of components, use useMemo for expensive calculations, use useCallback to memoize functions passed to children, implement code splitting with React.lazy and Suspense, virtualize long lists with react-window, avoid creating objects/arrays inline in JSX, and ensure proper key usage in lists.</p>
 `
     }
+,
+    // ========== OUTPUT-BASED & SCENARIO QUESTIONS ==========
+    "What's the Output? (React)": {
+        concept: `
+<p><strong>🎯 Output-Based Interview Questions</strong></p>
+
+<p><strong>Q1: What will this output?</strong></p>
+<pre class="language-javascript">
+function Counter() {
+  const [count, setCount] = useState(0);
+  
+  const handleClick = () => {
+    setCount(count + 1);
+    setCount(count + 1);
+    setCount(count + 1);
+  };
+  
+  return &lt;button onClick={handleClick}&gt;{count}&lt;/button&gt;;
+}
+// Click button once. What is count?
+</pre>
+<p><strong>Answer:</strong> <code>1</code> (not 3!)</p>
+<p><strong>Why?</strong> All three setCount use the SAME count value (0). State updates are batched. To fix, use functional update: <code>setCount(prev => prev + 1)</code></p>
+
+<hr>
+
+<p><strong>Q2: What happens here?</strong></p>
+<pre class="language-javascript">
+function Timer() {
+  const [seconds, setSeconds] = useState(0);
+  
+  useEffect(() => {
+    setInterval(() => {
+      setSeconds(seconds + 1);
+    }, 1000);
+  }, []);
+  
+  return &lt;div&gt;{seconds}&lt;/div&gt;;
+}
+</pre>
+<p><strong>Answer:</strong> Shows <code>1</code> forever</p>
+<p><strong>Why?</strong> Empty dependency array = runs once. <code>seconds</code> is captured as 0. Fix: <code>setSeconds(s => s + 1)</code></p>
+
+<hr>
+
+<p><strong>Q3: Will this component re-render?</strong></p>
+<pre class="language-javascript">
+function App() {
+  const [count, setCount] = useState(0);
+  
+  return (
+    &lt;div&gt;
+      &lt;Child name="Ali" /&gt;
+      &lt;button onClick={() => setCount(count + 1)}&gt;Click&lt;/button&gt;
+    &lt;/div&gt;
+  );
+}
+
+function Child({ name }) {
+  console.log("Child rendered");
+  return &lt;p&gt;{name}&lt;/p&gt;;
+}
+</pre>
+<p><strong>Answer:</strong> Yes, Child re-renders every click</p>
+<p><strong>Why?</strong> When parent re-renders, children re-render too</p>
+<p><strong>Fix:</strong> Use <code>React.memo(Child)</code></p>
+`
+    },
+
+    "Code Scenarios (React)": {
+        concept: `
+<p><strong>📝 Scenario-Based Questions</strong></p>
+
+<p><strong>Scenario 1: Fix this code</strong></p>
+<pre class="language-javascript">
+function UserList() {
+  const [users, setUsers] = useState([]);
+  
+  useEffect(() => {
+    fetch('/api/users')
+      .then(res => res.json())
+      .then(data => setUsers(data));
+  });  // ← Problem here!
+  
+  return &lt;ul&gt;{users.map(u => &lt;li&gt;{u.name}&lt;/li&gt;)}&lt;/ul&gt;;
+}
+</pre>
+<p><strong>Problem:</strong> Infinite loop! No dependency array = runs every render</p>
+<p><strong>Fix:</strong> Add <code>[]</code> to run once: <code>useEffect(() => {...}, [])</code></p>
+
+<hr>
+
+<p><strong>Scenario 2: Why doesn't this work?</strong></p>
+<pre class="language-javascript">
+function Form() {
+  const [formData, setFormData] = useState({ name: '', email: '' });
+  
+  const handleChange = (e) => {
+    formData.name = e.target.value;  // ← Problem!
+    setFormData(formData);
+  };
+}
+</pre>
+<p><strong>Problem:</strong> Mutating state directly! React doesn't detect changes</p>
+<p><strong>Fix:</strong> Create new object: <code>setFormData({ ...formData, name: e.target.value })</code></p>
+
+<hr>
+
+<p><strong>Scenario 3: Why is key important?</strong></p>
+<pre class="language-javascript">
+// BAD - using index
+{items.map((item, index) => &lt;Item key={index} data={item} /&gt;)}
+
+// GOOD - using unique id
+{items.map(item => &lt;Item key={item.id} data={item} /&gt;)}
+</pre>
+<p><strong>Why?</strong> When items are added/removed/reordered, index keys cause wrong items to update. Use unique IDs!</p>
+
+<hr>
+
+<p><strong>Scenario 4: What's wrong?</strong></p>
+<pre class="language-javascript">
+function App() {
+  if (someCondition) {
+    const [state, setState] = useState(0);  // ← Problem!
+  }
+}
+</pre>
+<p><strong>Problem:</strong> Hooks can't be inside conditions/loops</p>
+<p><strong>Rule:</strong> Always call hooks at the top level!</p>
+`
+    },
+
+    "Debug This Code (React)": {
+        concept: `
+<p><strong>🔧 Debug These Common Mistakes</strong></p>
+
+<p><strong>Bug 1: Nothing shows on screen</strong></p>
+<pre class="language-javascript">
+function App() {
+  const items = ['a', 'b', 'c'];
+  
+  return (
+    &lt;ul&gt;
+      {items.map(item => {
+        &lt;li&gt;{item}&lt;/li&gt;  // ← Bug!
+      })}
+    &lt;/ul&gt;
+  );
+}
+</pre>
+<p><strong>Problem:</strong> Missing return statement (using { } instead of ( ))</p>
+<p><strong>Fix:</strong> Use <code>items.map(item => &lt;li&gt;{item}&lt;/li&gt;)</code> or add return</p>
+
+<hr>
+
+<p><strong>Bug 2: State not updating</strong></p>
+<pre class="language-javascript">
+const [items, setItems] = useState([1, 2, 3]);
+
+const addItem = () => {
+  items.push(4);  // ← Bug!
+  setItems(items);
+};
+</pre>
+<p><strong>Problem:</strong> Mutating array directly</p>
+<p><strong>Fix:</strong> <code>setItems([...items, 4])</code></p>
+
+<hr>
+
+<p><strong>Bug 3: Event handler runs immediately</strong></p>
+<pre class="language-javascript">
+&lt;button onClick={handleClick(5)}&gt;Click&lt;/button&gt;  // ← Bug!
+</pre>
+<p><strong>Problem:</strong> <code>handleClick(5)</code> runs on render!</p>
+<p><strong>Fix:</strong> <code>onClick={() => handleClick(5)}</code></p>
+
+<hr>
+
+<p><strong>Bug 4: Stale data in setTimeout</strong></p>
+<pre class="language-javascript">
+const [count, setCount] = useState(0);
+
+const handleClick = () => {
+  setTimeout(() => {
+    alert(count);  // Shows old value!
+  }, 3000);
+};
+</pre>
+<p><strong>Problem:</strong> count is captured when function was created</p>
+<p><strong>Fix:</strong> Use useRef or functional update</p>
+`
+    }
+
 };
 
 if (typeof module !== 'undefined') {

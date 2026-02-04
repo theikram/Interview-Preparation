@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interview Prep Hub</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=JetBrains+Mono&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Prism.js Syntax Highlighting - Tomorrow Night Theme -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="logo">
+                <i class="fa-solid fa-rocket"></i> Interview Hub
+            </div>
+            <div class="search-box">
+                <i class="fa-solid fa-search"></i>
+                <input type="text" id="categorySearch" placeholder="Search categories...">
+            </div>
+            <nav class="topic-nav" id="navContainer">
+                <!-- Categories injected by JS -->
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="top-bar">
+                <h1 id="currentCategoryTitle">Select a Category</h1>
+            </header>
+
+            <!-- Sub-Topic Navigation (Chip Buttons) -->
+            <div id="subTopicNav" class="sub-topic-nav hidden">
+                <!-- Topic chips injected by JS -->
+            </div>
+
+            <!-- Content Display Area -->
+            <div id="contentArea" class="content-area hidden">
+                <!-- View Toggle -->
+                <div class="view-controls">
+                    <button id="btnConcept" class="control-btn active">Concept</button>
+                    <button id="btnExample" class="control-btn">Example</button>
+                </div>
+
+                <!-- Content Card -->
+                <div class="card-container">
+                    <div class="card" id="contentCard">
+                        <h2 id="topicTitle">Topic Title</h2>
+                        <div class="card-content" id="cardContent">
+                            <!-- Content here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Welcome State -->
+            <div class="welcome-state" id="welcomeState">
+                <div class="welcome-box">
+                    <h1><i class="fa-solid fa-laptop-code"></i></h1>
+                    <h2>Interview Prep Hub</h2>
+                    <p>Select a category from the sidebar to start reviewing topics.</p>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Data modules - load before main data.js -->
+    <script src="data/html.js"></script>
+    <script src="data/css.js"></script>
+    <script src="data/javascript.js"></script>
+    <script src="data/typescript.js"></script>
+    <script src="data/mern.js"></script>
+    <script src="data/react.js"></script>
+    <script src="data/nextjs.js"></script>
+    <script src="data/tailwind.js"></script>
+    <script src="data/node.js"></script>
+    <script src="data/express.js"></script>
+    <script src="data/databases.js"></script>
+    <script src="data/auth.js"></script>
+    <script src="data/networking.js"></script>
+    <script src="data/dsa_coding.js"></script>
+    <script src="data/oop.js"></script>
+    <script src="data/devops.js"></script>
+    <script src="data/python_ai.js"></script>
+    <script src="data/software_eng.js"></script>
+    <script src="data/projects.js"></script>
+    <script src="data/courses.js"></script>
+    <script src="data/behavioral.js"></script>
+
+    <!-- Main data loader (combines all modules) -->
+    <script src="data.js"></script>
+
+    <!-- Prism.js for syntax highlighting -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-typescript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-sql.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-bash.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-json.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-jsx.min.js"></script>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

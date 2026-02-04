@@ -1,201 +1,366 @@
-// MERN STACK - Complete Interview Prep (Deep Dive & Interview Questions)
+// MERN STACK - Ultimate Deep Dive & Interview Prep
 const mernData = {
-  // ========== DETAILED CONCEPTS (Basic to One Step Further) ==========
+  // =========================================================================
+  // 🟢 NODE.JS DEEP DIVE
+  // =========================================================================
 
-  "Node.js Architecture": {
+  "1. Node.js Architecture & Internals": {
     concept: `
-<p><strong>🏗️ Node.js Architecture: Under the Hood</strong></p>
-<p>Node.js is not just "JavaScript on the server". It has a unique architecture that makes it special.</p>
+<p><strong>🏗️ How Node.js Actually Works</strong></p>
+<p>Node.js is not just "JS on Server". It's a runtime built on Chrome's V8 engine that uses a <strong>Single-Threaded Event Loop</strong> model.</p>
 
-<p><strong>1. Single-Threaded Event Loop:</strong></p>
-<p>Unlike Java or PHP which create a new "thread" (worker) for every request, Node.js uses <strong>one single thread</strong> for everything. It's like a Starbucks with one super-fast cashier.</p>
-
-<p><strong>2. Non-Blocking I/O:</strong></p>
-<p>When the cashier (Node) takes an order (Request) that takes time (like "make a latte" or "query database"), they don't wait. They pass the order to the kitchen (System Kernel/Worker Pool) and immediately take the next customer's order. When the latte is ready, a "callback" alerts the cashier.</p>
-
-<p><strong>3. Libuv:</strong></p>
-<p>The magic library written in C++ that gives Node.js its event loop and ability to talk to the OS (file system, network).</p>
-
-<pre>
-// Simple Non-Blocking Example
-console.log('1. Start');
-
-setTimeout(() => {
-    console.log('2. Timer Done (Latte Ready)');
-}, 2000);
-
-console.log('3. End');
-
-// Output:
-// 1. Start
-// 3. End
-// 2. Timer Done (Latte Ready)
-</pre>
-`
-  },
-
-  "Express.js Deep Dive": {
-    concept: `
-<p><strong>⚡ Express.js: More Than Just Routing</strong></p>
-<p>Express hides the ugly parts of Node's built-in <code>http</code> module.</p>
-
-<p><strong>Key Concepts:</strong></p>
+<p><strong>The "Chef" Analogy:</strong></p>
 <ul>
-<li><strong>Routing:</strong> Defining what happens when a user visits <code>/home</code> or <code>/api/users</code>.</li>
-<li><strong>Middleware:</strong> The backbone of Express. Functions that run in a chain.</li>
-<li><strong>Template Engines:</strong> (Optional) Rendering HTML on the server (EJS, Pug).</li>
+<li><strong>Traditional Server (Java/PHP):</strong> Like a restaurant where every customer gets their own personal waiter. If 1000 customers come, you need 1000 waiters. Heavy on memory!</li>
+<li><strong>Node.js:</strong> One super-fast waiter (The Event Loop) handling everyone. He takes an order, passes it to the Kitchen (System Workers), and immediately takes the next order. When food is ready, he serves it.</li>
 </ul>
 
-<p><strong>Project Structure Best Practices:</strong></p>
+<p><strong>Key Components:</strong></p>
+<ul>
+<li><strong>Call Stack:</strong> Executes JS code line-by-line.</li>
+<li><strong>Node APIs (C++):</strong> Handles heavy lifting (File I/O, Network).</li>
+<li><strong>Callback Queue:</strong> Holds tasks that are "ready" to run (like a timer finishing).</li>
+<li><strong>Event Loop:</strong> The manager that continuously checks: "Is the Stack empty? Do we have callbacks waiting?"</li>
+</ul>
+
+<p><strong>Blocking vs Non-Blocking:</strong></p>
 <pre>
-/project
-  /controllers (Logic)
-  /models      (Database Schemas)
-  /routes      (URL definitions)
-  /middleware  (Auth, validation)
-  server.js    (Entry point)
-</pre>
-`
-  },
+// Blocking (Bad): Freezes the whole app!
+const data = fs.readFileSync('/file.txt'); 
+console.log(data);
 
-  "MongoDB Advanced": {
-    concept: `
-<p><strong>🍃 MongoDB: Indexing & Relations</strong></p>
-<p>Going beyond basic CRUD.</p>
-
-<p><strong>1. Indexing (Speed):</strong></p>
-<p>Without an index, MongoDB scans <strong>every</strong> document to find one (Collection Scan). With an index, it jumps straight to the data (Index Scan). Always index fields you search by (email, username).</p>
-<pre>userSchema.index({ email: 1 }); // 1 = Ascending</pre>
-
-<p><strong>2. Population (Relations):</strong></p>
-<p>MongoDB is not relational, but <code>populate()</code> lets us simulate it. It replaces an ID with the actual document from another collection.</p>
-<pre>
-// User has many Posts
-const postSchema = new mongoose.Schema({
-    title: String,
-    author: { type: mongoose.Schema.Types.ObjectId, ref: 'User' }
+// Non-Blocking (Good): App keeps running!
+fs.readFile('/file.txt', (err, data) => {
+    console.log('File read!');
 });
-
-// Get post AND the author's details
-const post = await Post.findById(id).populate('author');
-console.log(post.author.name); // Prints name, not just ID!
+console.log('I run first!');
 </pre>
 `
   },
 
-  "React Data Flow": {
+  "2. Modules & File System": {
     concept: `
-<p><strong>⚛️ React: Data Flow & Lifecycle</strong></p>
+<p><strong>📦 The Module System</strong></p>
+<p>Node.js treats every file as a "Module". This keeps code isolated and organized.</p>
 
-<p><strong>Unidirectional Data Flow:</strong></p>
-<p>Data only flows <strong>DOWN</strong> (Parent → Child). To communicate UP, we pass a function down.</p>
-
-<p><strong>Component Lifecycle (Hooks Equivalent):</strong></p>
+<p><strong>CJS vs ESM:</strong></p>
 <ul>
-<li><strong>Mounting (Birth):</strong> <code>useEffect(() => {}, [])</code></li>
-<li><strong>Updating (Growth):</strong> <code>useEffect(() => {}, [count])</code></li>
-<li><strong>Unmounting (Death):</strong> <code>useEffect(() => { return () => cleanup() }, [])</code></li>
+<li><strong>CommonJS (CJS):</strong> The old standard. Uses <code>require()</code> and <code>module.exports</code>. Synchronous loading.</li>
+<li><strong>ES Modules (ESM):</strong> The modern standard. Uses <code>import</code> and <code>export</code>. Asynchronous. Use <code>"type": "module"</code> in package.json.</li>
 </ul>
 
-<p><strong>Virtual DOM vs Real DOM:</strong></p>
-<p>React creates a virtual copy. When state changes, it calculates the difference (diffing) and updates the minimum necessary parts of the Real DOM (reconciliation). This is why React is fast.</p>
+<p><strong>Core Modules (Built-in):</strong></p>
+<ul>
+<li><code>fs</code>: File System (Read/Write files)</li>
+<li><code>http</code>: Create servers</li>
+<li><code>path</code>: Handle file paths (Windows vs Mac slashes)</li>
+<li><code>os</code>: Info about the computer (CPU, Memory)</li>
+<li><code>crypto</code>: Hashing and Security</li>
+</ul>
+
+<pre>
+const path = require('path');
+const fullPath = path.join(__dirname, 'data', 'user.json');
+// Works on Windows (\\) and Mac (/) automatically!
+</pre>
 `
   },
 
-  // ========== 🔥 ESSENTIAL MERN QUESTIONS (The Top 9) ==========
+  // =========================================================================
+  // ⚡ EXPRESS.JS MASTERY
+  // =========================================================================
+
+  "3. Express Routing Masterclass": {
+    concept: `
+<p><strong>🛣️ Advanced Routing Patterns</strong></p>
+<p>Routing is how your app decides which code to run for a URL.</p>
+
+<p><strong>1. URL Parameters (Variables in URL):</strong></p>
+<p>Used for specific resources (IDs, usernames).</p>
+<pre>
+// Route: /users/123
+app.get('/users/:id', (req, res) => {
+    console.log(req.params.id); // "123"
+});
+</pre>
+
+<p><strong>2. Query Strings (Filtering):</strong></p>
+<p>Used for sorting, pagination, searching.</p>
+<pre>
+// URL: /search?term=laptop&sort=price
+app.get('/search', (req, res) => {
+    const { term, sort } = req.query;
+    // Search DB for 'laptop' sorted by 'price'
+});
+</pre>
+
+<p><strong>3. Route Grouping (cleaner code):</strong></p>
+<pre>
+const router = express.Router();
+router.get('/', getAllUsers);
+router.post('/', createUser);
+app.use('/api/users', router); // Prefixes all with /api/users
+</pre>
+`
+  },
+
+  "4. Middleware Architecture": {
+    concept: `
+<p><strong>🛡️ Middleware: The Heart of Express</strong></p>
+<p>Middleware creates a "Pipeline". Request enters -> Passes through stages -> Response leaves.</p>
+
+<p><strong>Types of Middleware:</strong></p>
+<ol>
+<li><strong>Application Level:</strong> <code>app.use(logic)</code> - Runs everywhere.</li>
+<li><strong>Router Level:</strong> <code>router.use(logic)</code> - Runs for a group of routes.</li>
+<li><strong>Built-in:</strong> <code>express.json()</code>, <code>express.static()</code>.</li>
+<li><strong>Error Handling:</strong> Takes 4 args <code>(err, req, res, next)</code>.</li>
+</ol>
+
+<p><strong>Common Use Cases:</strong></p>
+<ul>
+<li><strong>Logging:</strong> Record every visit.</li>
+<li><strong>Auth:</strong> Check if user sends a valid Token.</li>
+<li><strong>Sanitization:</strong> Clean malicious data from input.</li>
+</ul>
+
+<pre>
+// Custom Auth Middleware
+const protect = (req, res, next) => {
+    if (!req.headers.authorization) {
+        return res.status(401).json({ error: 'Stop right there!' });
+    }
+    next(); // Valid? Pass to the route handler.
+};
+</pre>
+`
+  },
+
+  // =========================================================================
+  // 🍃 MONGODB & MONGOOSE DEEP DIVE
+  // =========================================================================
+
+  "5. Schema Design & Data Modeling": {
+    concept: `
+<p><strong>📐 Designing Data for NoSQL</strong></p>
+<p>In SQL you Normalize (split data). In MongoDB, you logically <strong>Embed</strong> or <strong>Reference</strong>.</p>
+
+<p><strong>1. Embedding (Nesting):</strong></p>
+<p>Store related data INSIDE the document. Good for "One-to-Few" relationships.</p>
+<pre>
+{
+  name: "Ikram",
+  addresses: [
+     { city: "New York", zip: "10001" }, // Data lives here
+     { city: "London", zip: "SW1" }
+  ]
+}
+// Pros: Fast read (1 query). Cons: Hard to query addresses alone.
+</pre>
+
+<p><strong>2. Referencing (Normalization):</strong></p>
+<p>Store IDs linking to other documents. Good for "One-to-Many" or "Many-to-Many".</p>
+<pre>
+// User Doc
+{ _id: 1, name: "Ikram" }
+
+// Post Doc
+{ title: "React Guide", author_id: 1 } 
+// Use .populate('author_id') to link them!
+</pre>
+`
+  },
+
+  "6. Advanced Mongoose & Aggregation": {
+    concept: `
+<p><strong>🔍 Power Querying</strong></p>
+
+<p><strong>Advanced Operators:</strong></p>
+<ul>
+<li><code>$gt / $lt</code>: Greater/Less than (Prices, Dates).</li>
+<li><code>$in</code>: Match any value in an array (Find products in [Red, Blue]).</li>
+<li><code>$regex</code>: Partial text search ("iphone" finds "Apple iPhone").</li>
+</ul>
+
+<p><strong>The Aggregation Pipeline (MapReduce's successor):</strong></p>
+<p>Powerful multi-stage data processing. Think of a conveyor belt.</p>
+<pre>
+await Order.aggregate([
+  { $match: { status: "completed" } },      // Stage 1: Filter
+  { $group: { _id: "$userId", total: { $sum: "$amount" } } }, // Stage 2: Sum
+  { $sort: { total: -1 } }                  // Stage 3: Sort highest
+]);
+</pre>
+
+<p><strong>Mongoose Virtuals:</strong></p>
+<p>Fields that don't exist in DB but exist in Code. (e.g., <code>fullName</code> generated from <code>firstName + lastName</code>).</p>
+`
+  },
+
+  // =========================================================================
+  // ⚛️ REACT.JS ADVANCED CONCEPTS
+  // =========================================================================
+
+  "7. React Core & Reconciliation": {
+    concept: `
+<p><strong>🧠 How React Updates the UI</strong></p>
+<p>React is fast because it hates touching the Browser DOM (which is slow).</p>
+
+<p><strong>The Virtual DOM:</strong></p>
+<p>A lightweight JavaScript object copy of the UI. When you call <code>setState</code>, React:</p>
+<ol>
+<li>Creates a NEW Virtual DOM tree.</li>
+<li>Compares it with the OLD tree (<strong>Diffing Algorithm</strong>).</li>
+<li>Identify ONLY what changed (e.g., just one text node).</li>
+<li>Updates the Real DOM with ONLY those changes (<strong>Reconciliation</strong>).</li>
+</ol>
+
+<p><strong>React Fiber:</strong></p>
+<p>The new engine (since React 16) that can pause and resume rendering work, allowing for smoother animations and "Concurrent Mode".</p>
+`
+  },
+
+  "8. Hooks Mastery (Beyond Basics)": {
+    concept: `
+<p><strong>🪝 Deep Dive into Hooks</strong></p>
+
+<p><strong>useRef:</strong></p>
+<p>Like a "Box" to store values that persist between renders BUT don't cause re-renders. Also used to access DOM elements directly (inputs).</p>
+
+<p><strong>useMemo:</strong></p>
+<p><strong>Caches a calculated value.</strong> "Don't re-calculate 'Expensive Math' unless numbers change."</p>
+<pre>const total = useMemo(() => heavyMath(a, b), [a, b]);</pre>
+
+<p><strong>useCallback:</strong></p>
+<p><strong>Caches a function definition.</strong> "Don't re-create this function object on every render." Vital when passing functions to child components to prevent their unnecessary re-renders.</p>
+
+<p><strong>Custom Hooks:</strong></p>
+<p>Extracting component logic into reusable functions. (e.g., <code>useFetch</code>, <code>useLocalStorage</code>).</p>
+`
+  },
+
+  "9. State Management Patterns": {
+    concept: `
+<p><strong>💾 Managing Data Across the App</strong></p>
+
+<p><strong>1. Prop Drilling (The Problem):</strong></p>
+<p>Passing data: Grandparent -> Parent -> Child -> Grandchild. Messy and hard to maintain.</p>
+
+<p><strong>2. Context API (The Native Solution):</strong></p>
+<p>Create a "Provider" that wraps the app. Any child, anywhere, can "Consume" the data. Great for: Themes, User Auth, Language.</p>
+
+<p><strong>3. Redux / Zustand (External Libraries):</strong></p>
+<p>For complex global state. Separation of concerns:</p>
+<ul>
+<li><strong>Store:</strong> The single source of truth (Database for frontend).</li>
+<li><strong>Action:</strong> Description of event ("USER_LOGGED_IN").</li>
+<li><strong>Reducer:</strong> Pure function that calculates new state based on Action.</li>
+</ul>
+`
+  },
+
+  // =========================================================================
+  // 🔐 FULL STACK & AUTHENTICATION
+  // =========================================================================
+
+  "10. Authentication Strategy": {
+    concept: `
+<p><strong>🔐 Modern Auth: JWT vs Sessions</strong></p>
+
+<p><strong>Session Based (Old, Stateful):</strong></p>
+<p>Server creates a session ID, stores it in memory/DB, and sends cookie. User sends cookie, server looks up ID in memory. Hard to scale (multiple servers need to share memory).</p>
+
+<p><strong>JWT Based (Modern, Stateless):</strong></p>
+<p>Server signs a token with a Secret Key. The Token contains data (<code>user_id: 123</code>). Server verifies signature. No memory lookup needed! Scales infinitely.</p>
+
+<p><strong>Where to store JWT?</strong></p>
+<ul>
+<li><strong>LocalStorage:</strong> Easy (<code>localStorage.getItem</code>), but vulnerable to XSS attacks (JS can read it).</li>
+<li><strong>HttpOnly Cookie:</strong> Secure. JS cannot read it. Vulnerable to CSRF (needs protection). Best practice for sensitive apps.</li>
+</ul>
+`
+  },
+
+  // =========================================================================
+  // 🔥 ESSENTIAL MERN QUESTIONS (USER REQUESTED)
+  // =========================================================================
   "🔥 Essential MERN Questions": {
     concept: `
-<p><strong>🏆 Top 9 Must-Know MERN Questions</strong></p>
+<p><strong>🏆 The 9 Must-Know Questions (Master These!)</strong></p>
 
 <p><strong>1. Difference between SQL and NoSQL</strong></p>
 <ul>
-<li><strong>SQL (MySQL):</strong> Rigid tables (rows/columns). Good for strict relationships.</li>
-<li><strong>NoSQL (MongoDB):</strong> Flexible documents (JSON). Good for rapid growth and changing data.</li>
-<li><strong>Why MERN?</strong> MongoDB stores JSON. React & Node use JSON. It's one language (JS) everywhere.</li>
+<li><strong>SQL (MySQL):</strong> Relational, Tables/Rows, Fixed Schema, Vertically Scalable (Better Hardware). Good for: Finance, Complex Relations.</li>
+<li><strong>NoSQL (MongoDB):</strong> Non-relational, Documents (JSON), Dynamic Schema, Horizontally Scalable (More Servers). Good for: Big Data, Rapid Dev.</li>
+<li><strong>Fit for MERN:</strong> JS end-to-end. MongoDB stores BSON (Binary JSON), Node/React speak JSON. seamless data flow.</li>
 </ul>
 
 <p><strong>2. Explain REST vs GraphQL</strong></p>
 <ul>
-<li><strong>REST:</strong> Multiple URLs (<code>/users</code>, <code>/posts</code>). Server decides what data to send. Easy to cache.</li>
-<li><strong>GraphQL:</strong> One URL (<code>/graphql</code>). Client asks for exactly what it needs (<code>{ user { name } }</code>). No over-fetching.</li>
+<li><strong>REST:</strong> Multiple Endpoints (<code>/users</code>, <code>/posts</code>). Fixed data structure. Over-fetching (getting too much) or Under-fetching (too little).</li>
+<li><strong>GraphQL:</strong> Single Endpoint (<code>/graphql</code>). Client queries exactly what fields it needs. No waste. Flexible.</li>
 </ul>
 
-<p><strong>3. What is Express.js and why use it?</strong></p>
-<p>It's a framework that runs on Node.js. It simplifies: 1. Routing (URL handling), 2. Middleware support, 3. API creation. Without it, you'd have to write raw HTTP code (messy).</p>
+<p><strong>3. What is Express.js & Why use it?</strong></p>
+<p>Minimal Node.js framework. It abstracts low-level server logic. Features: Robust Routing, Middleware support, Template rendering. Without it, handling POST bodies and URL params in raw Node is painful.</p>
 
-<p><strong>4. How does Middleware work in Express?</strong></p>
-<p>It's a function that runs <strong>in the middle</strong> of a request. <code>req -> middleware -> res</code>. Used for: Checking tokens (Auth), Logging, Parsing JSON errors.</p>
+<p><strong>4. How does Middleware work?</strong></p>
+<p>Functions that execute during the request-response cycle. They have access to <code>req</code>, <code>res</code>, and <code>next</code>.</p>
+<p><em>Flow:</em> Request -> Middleware1 (Log) -> Middleware2 (Auth) -> Route Handler -> Response.</p>
 
 <p><strong>5. Callback vs Promises vs Async/Await</strong></p>
 <ul>
-<li><strong>Callback:</strong> Old way. Can lead to "Callback Hell" (nested code).</li>
-<li><strong>Promise:</strong> Better. Uses <code>.then()</code> and <code>.catch()</code>.</li>
-<li><strong>Async/Await:</strong> Modern Best Practice. Looks like synchronous code. Readable and clean.</li>
+<li><strong>Callback:</strong> Function passed as argument. Risk: "Callback Hell" (nesting).</li>
+<li><strong>Promise:</strong> Object representing future completion. Chaining <code>.then()</code>. Cleaner errors <code>.catch()</code>.</li>
+<li><strong>Async/Await:</strong> Syntactic sugar over Promises. Code looks synchronous/linear. Uses <code>try/catch</code> block. Best readability.</li>
 </ul>
 
-<p><strong>6. What is Mongoose and why use it?</strong></p>
-<p>It's an ODM (Object Data Modeler). It adds <strong>Schemas</strong> (rules) to MongoDB. It ensures your data looks correct (e.g., "Email is required") before saving.</p>
+<p><strong>6. What is Mongoose?</strong></p>
+<p>ODM (Object Data Modeling) library for Mongo. It imposes structure (Schemas) on schema-less MongoDB. Handles Validation, Type Casting, Hooks (pre-save), and relationships.</p>
 
-<p><strong>7. How to handle Auth (Authentication vs Authorization)?</strong></p>
+<p><strong>7. Auth & Authz?</strong></p>
 <ul>
-<li><strong>Authentication (Who are you?):</strong> Login using email/password. Use <strong>bcrypt</strong> to hash passwords.</li>
-<li><strong>Authorization (What can you do?):</strong> Send a <strong>JWT</strong> (Token) to client on login. Client sends it back in headers. Server verifies it.</li>
+<li><strong>Authentication:</strong> Identity Verification (Login). Method: Passwords (bcrypt), OAuth.</li>
+<li><strong>Authorization:</strong> Access Control (Permissions). Method: JWT Scopes, User Roles (Admin/User).</li>
 </ul>
 
-<p><strong>8. Meaning of CRUD?</strong></p>
-<ul>
-<li><strong>C</strong>reate (POST)</li>
-<li><strong>R</strong>ead (GET)</li>
-<li><strong>U</strong>pdate (PUT/PATCH)</li>
-<li><strong>D</strong>elete (DELETE)</li>
-</ul>
+<p><strong>8. CRUD Operations?</strong></p>
+<p>The 4 pillars of persistent storage apps. Mapping to HTTP: Create(POST), Read(GET), Update(PUT/PATCH), Delete(DELETE).</p>
 
 <p><strong>9. Error Handling & Status Codes</strong></p>
+<p>Communicating results to client clearly.</p>
 <ul>
-<li><strong>200:</strong> OK (Success)</li>
-<li><strong>201:</strong> Created (New Record)</li>
-<li><strong>400:</strong> Bad Request (User sent wrong data)</li>
-<li><strong>401:</strong> Unauthorized (Login required)</li>
-<li><strong>404:</strong> Not Found</li>
-<li><strong>500:</strong> Server Error (Our fault)</li>
+<li>2xx: Success (200 OK, 201 Created)</li>
+<li>4xx: Client Error (400 Bad Request, 401 Unauth, 403 Forbidden, 404 Not Found)</li>
+<li>5xx: Server Error (500 Internal Error, 503 Unavailable)</li>
 </ul>
 `
   },
 
-  // ========== A-Z INTERVIEW QUESTIONS (Comprehensive) ==========
+  // =========================================================================
+  // 🚀 A-Z RAPID FIRE (EXTRA CREDIT)
+  // =========================================================================
   "🚀 A-Z Interview Questions": {
     concept: `
-<p><strong>🎓 Complete MERN Interview Guide (Additional Concepts)</strong></p>
+<p><strong>🎓 Rapid Fire Knowledge Check</strong></p>
 
-<h3>🟢 Node.js</h3>
-<p><strong>Q: What is REPL?</strong></p>
-<p>Read-Eval-Print-Loop. The interactive console you get when you type <code>node</code> in terminal.</p>
-<p><strong>Q: What are Streams?</strong></p>
-<p>Handling large data (like videos) chunk by chunk, without loading the whole file into memory.</p>
+<p><strong>Q: What is a Pure Function?</strong></p>
+<p>A function that always returns the same output for the same input and has no side effects. React Reducers must be pure.</p>
 
-<h3>⚡ Express.js</h3>
-<p><strong>Q: What is Body Parser?</strong></p>
-<p>Middleware (now <code>express.json()</code>) that reads the "body" of a POST request so you can use <code>req.body</code>.</p>
-<p><strong>Q: How do you handle file uploads?</strong></p>
-<p>Using middleware like <code>multer</code>.</p>
+<p><strong>Q: What is "Lifting State Up"?</strong></p>
+<p>Moving state from a child component to a common parent so sibling components can share data.</p>
 
-<h3>🍃 MongoDB</h3>
-<p><strong>Q: What is Aggregation?</strong></p>
-<p>Advanced filtering. Process data records and return computed results (like Sum, Average).</p>
-<p><strong>Q: What is Sharding?</strong></p>
-<p>Splitting data across multiple servers to handle huge amounts of data.</p>
+<p><strong>Q: What is a Thunk?</strong></p>
+<p>Middleware in Redux that allows you to write action creators that return a function instead of an action. Used for Async logic (API calls).</p>
 
-<h3>⚛️ React.js</h3>
-<p><strong>Q: What is Higher Order Component (HOC)?</strong></p>
-<p>A function that takes a component and returns a new component (e.g., adding Auth protection).</p>
-<p><strong>Q: What is Context API?</strong></p>
-<p>Way to pass data globally (like Theme or User) without "Prop Drilling".</p>
+<p><strong>Q: What is Tree Shaking?</strong></p>
+<p>Removing unused code during build process (Webpack) to make the bundle smaller.</p>
 
-<h3>🔐 Security</h3>
-<p><strong>Q: What is XSS?</strong></p>
-<p>Cross-Site Scripting. Attackers injecting scripts into your site. Prevent by escaping input (React does this automatically).</p>
-<p><strong>Q: What is Environment Variables?</strong></p>
-<p>Storing secrets (API keys, DB Passwords) in a <code>.env</code> file, not in code.</p>
+<p><strong>Q: What is CORS preflight?</strong></p>
+<p>An <code>OPTIONS</code> request sent by browser before the actual request to check if the server allows the action.</p>
+
+<p><strong>Q: SQL Injection vs NoSQL Injection?</strong></p>
+<p>Both are attacks where malicious code is inserted into queries. Prevention: Sanitize inputs, use OM/ODM (Mongoose/Sequelize) which escape queries automatically.</p>
 `
   }
 };

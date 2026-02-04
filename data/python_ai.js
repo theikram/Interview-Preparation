@@ -848,6 +848,177 @@ else:
 </pre>
 `,
     }
+,
+
+    "Fibonacci Sequence (Python)": {
+        concept: `
+<p><strong>🔢 Fibonacci in Python</strong></p>
+
+<p>Sequence: 0, 1, 1, 2, 3, 5, 8, 13, 21...</p>
+
+<pre>
+# Method 1: Loop (Fast and efficient)
+def fibonacci(n):
+    if n <= 1:
+        return n
+    
+    a, b = 0, 1  # First two numbers
+    
+    for i in range(2, n + 1):
+        a, b = b, a + b  # Python swap: b becomes new, a becomes old b
+    
+    return b
+
+print(fibonacci(6))  # 8
+# Steps: 0→1→1→2→3→5→8
+
+
+# Method 2: Recursive (Simple but slow)
+def fib_recursive(n):
+    if n <= 1:
+        return n
+    return fib_recursive(n - 1) + fib_recursive(n - 2)
+
+
+# Print first N Fibonacci numbers
+def print_fibonacci(n):
+    for i in range(n):
+        print(fibonacci(i), end=" ")
+    print()  # New line
+
+print_fibonacci(7)
+# Output: 0 1 1 2 3 5 8
+
+
+# Method 3: Using List (Store all values)
+def fibonacci_list(n):
+    fib = [0, 1]
+    for i in range(2, n):
+        fib.append(fib[i-1] + fib[i-2])
+    return fib
+
+print(fibonacci_list(7))
+# Output: [0, 1, 1, 2, 3, 5, 8]
+</pre>
+`
+    },
+
+    "Pattern Printing (Python)": {
+        concept: `
+<p><strong>📐 Pattern Programs in Python</strong></p>
+
+<p><strong>Pattern 1: Right Triangle</strong></p>
+<pre>
+def print_triangle(n):
+    for i in range(1, n + 1):
+        print('* ' * i)
+
+print_triangle(5)
+# Output:
+# * 
+# * * 
+# * * * 
+# * * * * 
+# * * * * * 
+</pre>
+
+<p><strong>Pattern 2: Pyramid</strong></p>
+<pre>
+def print_pyramid(n):
+    for i in range(1, n + 1):
+        spaces = ' ' * (n - i)  # Leading spaces
+        stars = '* ' * i         # Stars
+        print(spaces + stars)
+
+print_pyramid(5)
+# Output:
+#     * 
+#    * * 
+#   * * * 
+#  * * * * 
+# * * * * * 
+</pre>
+
+<p><strong>Pattern 3: Number Triangle</strong></p>
+<pre>
+def print_number_triangle(n):
+    for i in range(1, n + 1):
+        for j in range(1, i + 1):
+            print(j, end=' ')
+        print()  # New line
+
+print_number_triangle(5)
+# Output:
+# 1 
+# 1 2 
+# 1 2 3 
+# 1 2 3 4 
+# 1 2 3 4 5 
+</pre>
+
+<p><strong>Pattern 4: Inverted Triangle</strong></p>
+<pre>
+def print_inverted_triangle(n):
+    for i in range(n, 0, -1):
+        print('* ' * i)
+
+print_inverted_triangle(5)
+# Output:
+# * * * * * 
+# * * * * 
+# * * * 
+# * * 
+# * 
+</pre>
+
+<p><strong>Pattern 5: Diamond</strong></p>
+<pre>
+def print_diamond(n):
+    # Upper half (pyramid)
+    for i in range(1, n + 1):
+        print(' ' * (n - i) + '* ' * i)
+    
+    # Lower half (inverted pyramid)
+    for i in range(n - 1, 0, -1):
+        print(' ' * (n - i) + '* ' * i)
+
+print_diamond(5)
+# Output:
+#     * 
+#    * * 
+#   * * * 
+#  * * * * 
+# * * * * * 
+#  * * * * 
+#   * * * 
+#    * * 
+#     * 
+</pre>
+
+<p><strong>Pattern 6: Number Pyramid</strong></p>
+<pre>
+def print_number_pyramid(n):
+    for i in range(1, n + 1):
+        # Print spaces
+        print(' ' * (n - i), end='')
+        
+        # Print ascending numbers
+        for j in range(1, i + 1):
+            print(j, end=' ')
+        
+        print()  # New line
+
+print_number_pyramid(5)
+# Output:
+#     1 
+#    1 2 
+#   1 2 3 
+#  1 2 3 4 
+# 1 2 3 4 5 
+</pre>
+`
+    },
+
 };
 
 if (typeof module !== 'undefined') {

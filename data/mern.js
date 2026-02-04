@@ -734,6 +734,236 @@ fetch('/api/profile', {
 </pre>
 `
     }
+,
+
+    // ========== ADDITIONAL INTERVIEW QUESTIONS ==========
+    "SQL vs NoSQL": {
+        concept: `
+<p><strong>🗄️ SQL vs NoSQL - Which to Choose?</strong></p>
+
+<table>
+<tr><th>Feature</th><th>SQL (MySQL, PostgreSQL)</th><th>NoSQL (MongoDB)</th></tr>
+<tr><td>Structure</td><td>Fixed schema (tables, rows)</td><td>Flexible (documents, JSON)</td></tr>
+<tr><td>Relationships</td><td>JOINs between tables</td><td>Embedded or referenced</td></tr>
+<tr><td>Scaling</td><td>Vertical (bigger server)</td><td>Horizontal (more servers)</td></tr>
+<tr><td>Best For</td><td>Complex queries, transactions</td><td>Flexible data, fast development</td></tr>
+</table>
+
+<p><strong>Why MongoDB fits MERN:</strong></p>
+<ul>
+<li>✅ JSON everywhere (MongoDB stores JSON, Express/React use JSON)</li>
+<li>✅ Flexible schema - easy to change structure during development</li>
+<li>✅ JavaScript-friendly - Mongoose uses JS syntax</li>
+<li>✅ Fast prototyping - no need to design complex schemas upfront</li>
+</ul>
+
+<p><strong>Example Comparison:</strong></p>
+<pre>
+// SQL (Multiple tables with JOINs)
+users table: id, name, email
+posts table: id, user_id, title, content
+
+SELECT users.name, posts.title 
+FROM users 
+JOIN posts ON users.id = posts.user_id;
+
+// MongoDB (Embedded document)
+{
+  "_id": 1,
+  "name": "Ali",
+  "email": "ali@test.com",
+  "posts": [
+    { "title": "My First Post", "content": "..." },
+    { "title": "Second Post", "content": "..." }
+  ]
+}
+</pre>
+`
+    },
+
+    "Fibonacci & Patterns": {
+        concept: `
+<p><strong>🔢 Fibonacci Sequence - Easy Explanation</strong></p>
+
+<p>Fibonacci: Each number is the sum of the previous two numbers.</p>
+<p>Sequence: 0, 1, 1, 2, 3, 5, 8, 13, 21...</p>
+
+<p><strong>JavaScript Implementation:</strong></p>
+<pre>
+// Method 1: Simple Loop (Best for beginners)
+function fibonacci(n) {
+    if (n <= 1) return n;
+    
+    let a = 0, b = 1;
+    
+    for (let i = 2; i <= n; i++) {
+        let temp = a + b;  // Add previous two
+        a = b;             // Move forward
+        b = temp;
+    }
+    
+    return b;
+}
+
+console.log(fibonacci(6));  // 8
+// Steps: 0, 1, 1, 2, 3, 5, 8
+
+// Method 2: Recursive (Elegant but slower)
+function fibRecursive(n) {
+    if (n <= 1) return n;
+    return fibRecursive(n - 1) + fibRecursive(n - 2);
+}
+
+// Print first N numbers
+function printFibonacci(n) {
+    for (let i = 0; i < n; i++) {
+        console.log(fibonacci(i));
+    }
+}
+
+printFibonacci(7);  // 0, 1, 1, 2, 3, 5, 8
+</pre>
+
+<p><strong>Python Implementation:</strong></p>
+<pre>
+# Method 1: Simple Loop
+def fibonacci(n):
+    if n <= 1:
+        return n
+    
+    a, b = 0, 1
+    
+    for i in range(2, n + 1):
+        a, b = b, a + b  # Swap and add
+    
+    return b
+
+print(fibonacci(6))  # 8
+
+# Method 2: Recursive
+def fib_recursive(n):
+    if n <= 1:
+        return n
+    return fib_recursive(n - 1) + fib_recursive(n - 2)
+
+# Print first N numbers
+def print_fibonacci(n):
+    for i in range(n):
+        print(fibonacci(i), end=" ")
+
+print_fibonacci(7)  # 0 1 1 2 3 5 8
+</pre>
+
+<p><strong>📐 Pattern Printing</strong></p>
+
+<p><strong>Pattern 1: Right Triangle</strong></p>
+<pre>
+// JavaScript
+function printTriangle(n) {
+    for (let i = 1; i <= n; i++) {
+        let row = '';
+        for (let j = 1; j <= i; j++) {
+            row += '* ';
+        }
+        console.log(row);
+    }
+}
+
+printTriangle(5);
+// Output:
+// * 
+// * * 
+// * * * 
+// * * * * 
+// * * * * * 
+
+# Python
+def print_triangle(n):
+    for i in range(1, n + 1):
+        print('* ' * i)
+
+print_triangle(5)
+</pre>
+
+<p><strong>Pattern 2: Pyramid</strong></p>
+<pre>
+// JavaScript
+function printPyramid(n) {
+    for (let i = 1; i <= n; i++) {
+        let spaces = ' '.repeat(n - i);
+        let stars = '* '.repeat(i);
+        console.log(spaces + stars);
+    }
+}
+
+printPyramid(5);
+// Output:
+//     * 
+//    * * 
+//   * * * 
+//  * * * * 
+// * * * * * 
+
+# Python
+def print_pyramid(n):
+    for i in range(1, n + 1):
+        print(' ' * (n - i) + '* ' * i)
+
+print_pyramid(5)
+</pre>
+
+<p><strong>Pattern 3: Number Triangle</strong></p>
+<pre>
+// JavaScript
+function printNumberTriangle(n) {
+    for (let i = 1; i <= n; i++) {
+        let row = '';
+        for (let j = 1; j <= i; j++) {
+            row += j + ' ';
+        }
+        console.log(row);
+    }
+}
+
+printNumberTriangle(5);
+// Output:
+// 1 
+// 1 2 
+// 1 2 3 
+// 1 2 3 4 
+// 1 2 3 4 5 
+
+# Python
+def print_number_triangle(n):
+    for i in range(1, n + 1):
+        for j in range(1, i + 1):
+            print(j, end=' ')
+        print()
+
+print_number_triangle(5)
+</pre>
+`
+    },
+
+    "More Interview Questions": {
+        concept: `
+<p><strong>📚 Additional MERN Questions</strong></p>
+
+<p>See the complete list of 9 questions in the MERN Stack category including:</p>
+<ul>
+<li>SQL vs NoSQL</li>
+<li>REST vs GraphQL</li>
+<li>What is Express.js?</li>
+<li>How Middleware Works</li>
+<li>Callbacks vs Promises vs Async/Await</li>
+<li>What is Mongoose?</li>
+<li>Authentication & Authorization</li>
+<li>CRUD with MongoDB</li>
+<li>HTTP Status Codes</li>
+</ul>
+`
+    },
+
 };
 
 if (typeof module !== 'undefined') {

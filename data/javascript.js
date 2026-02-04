@@ -1971,6 +1971,165 @@ for (const product of products) {
 </pre>
 `
     }
+,
+
+    "Fibonacci Sequence": {
+        concept: `
+<p><strong>🔢 Fibonacci - Each number is sum of previous two</strong></p>
+
+<p>Sequence: 0, 1, 1, 2, 3, 5, 8, 13, 21...</p>
+
+<pre>
+// Method 1: Loop (Recommended - Fast)
+function fibonacci(n) {
+    if (n <= 1) return n;  // Base case
+    
+    let a = 0, b = 1;  // First two numbers
+    
+    for (let i = 2; i <= n; i++) {
+        let temp = a + b;  // Add previous two
+        a = b;             // Shift: a becomes b
+        b = temp;          // Shift: b becomes sum
+    }
+    
+    return b;
+}
+
+console.log(fibonacci(6));  // 8
+// Steps: 0→1→1→2→3→5→8
+
+
+// Method 2: Recursive (Elegant but slow)
+function fibRecursive(n) {
+    if (n <= 1) return n;
+    return fibRecursive(n - 1) + fibRecursive(n - 2);
+}
+
+
+// Print first N Fibonacci numbers
+function printFibonacci(n) {
+    for (let i = 0; i < n; i++) {
+        console.log(fibonacci(i));
+    }
+}
+
+printFibonacci(7);
+// Output: 0, 1, 1, 2, 3, 5, 8
+</pre>
+`
+    },
+
+    "Pattern Printing": {
+        concept: `
+<p><strong>📐 Common Pattern Programs</strong></p>
+
+<p><strong>Pattern 1: Right Triangle</strong></p>
+<pre>
+function printTriangle(n) {
+    for (let i = 1; i <= n; i++) {
+        let row = '';
+        for (let j = 1; j <= i; j++) {
+            row += '* ';
+        }
+        console.log(row);
+    }
+}
+
+printTriangle(5);
+// Output:
+// * 
+// * * 
+// * * * 
+// * * * * 
+// * * * * * 
+</pre>
+
+<p><strong>Pattern 2: Pyramid</strong></p>
+<pre>
+function printPyramid(n) {
+    for (let i = 1; i <= n; i++) {
+        let spaces = ' '.repeat(n - i);  // Leading spaces
+        let stars = '* '.repeat(i);       // Stars
+        console.log(spaces + stars);
+    }
+}
+
+printPyramid(5);
+// Output:
+//     * 
+//    * * 
+//   * * * 
+//  * * * * 
+// * * * * * 
+</pre>
+
+<p><strong>Pattern 3: Number Triangle</strong></p>
+<pre>
+function printNumberTriangle(n) {
+    for (let i = 1; i <= n; i++) {
+        let row = '';
+        for (let j = 1; j <= i; j++) {
+            row += j + ' ';
+        }
+        console.log(row);
+    }
+}
+
+printNumberTriangle(5);
+// Output:
+// 1 
+// 1 2 
+// 1 2 3 
+// 1 2 3 4 
+// 1 2 3 4 5 
+</pre>
+
+<p><strong>Pattern 4: Inverted Triangle</strong></p>
+<pre>
+function printInvertedTriangle(n) {
+    for (let i = n; i >= 1; i--) {
+        console.log('* '.repeat(i));
+    }
+}
+
+printInvertedTriangle(5);
+// Output:
+// * * * * * 
+// * * * * 
+// * * * 
+// * * 
+// * 
+</pre>
+
+<p><strong>Pattern 5: Diamond</strong></p>
+<pre>
+function printDiamond(n) {
+    // Upper half (pyramid)
+    for (let i = 1; i <= n; i++) {
+        console.log(' '.repeat(n - i) + '* '.repeat(i));
+    }
+    
+    // Lower half (inverted pyramid)
+    for (let i = n - 1; i >= 1; i--) {
+        console.log(' '.repeat(n - i) + '* '.repeat(i));
+    }
+}
+
+printDiamond(5);
+// Output:
+//     * 
+//    * * 
+//   * * * 
+//  * * * * 
+// * * * * * 
+//  * * * * 
+//   * * * 
+//    * * 
+//     * 
+</pre>
+`
+    },
+
 };
 
 if (typeof module !== 'undefined') {

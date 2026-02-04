@@ -13,17 +13,6 @@ const mernData = {
 <tr><td>R</td><td>React</td><td>Frontend (user interface)</td></tr>
 <tr><td>N</td><td>Node.js</td><td>Runtime (runs JS on server)</td></tr>
 </table>
-
-<p><strong>How they connect:</strong></p>
-<pre>
-User Browser (React)
-    ↓ HTTP Request (fetch/axios)
-Express Server (Node.js)
-    ↓ Database Query (Mongoose)
-MongoDB
-    ↓ Returns Data
-Express → React → Shows to User
-</pre>
 `
   },
 
@@ -138,114 +127,204 @@ function App() {
 `
   },
 
-  // ========== A-Z INTERVIEW QUESTIONS ==========
+  // ========== A-Z SUMMARY ==========
   "🔥 A-Z Interview Questions": {
     concept: `
-<p><strong>🎓 Complete MERN Interview Guide (Easy Answers)</strong></p>
+<p><strong>🎓 Rapid Fire MERN Interview Questions</strong></p>
+<p><em>(Click the specific buttons below for detailed answers with code!)</em></p>
 
-<h3>🟢 Node.js & General</h3>
+<h3>🟢 Node.js</h3>
+<p><strong>Q: Event Loop?</strong> System that handles tasks. Heavy tasks go to workers, lightweight stay on main thread.</p>
+<p><strong>Q: package.json?</strong> Application ID card. Dependencies, scripts, version.</p>
 
-<p><strong>Q1: What is the Event Loop?</strong></p>
-<p>Node.js is single-threaded (one chef). The Event Loop is the system that handles tasks continuously. If a task is heavy (like reading a file), Node sends it to a "worker" and moves to the next task. When the worker is done, the result comes back to the main thread. This makes Node fast.</p>
-
-<p><strong>Q2: Thread-based vs Event-driven?</strong></p>
-<p><strong>Thread-based (Java/PHP):</strong> Creates a new thread for every user. Memory heavy.</p>
-<p><strong>Event-driven (Node.js):</strong> One thread for everyone. Uses events to switch tasks quickly. Light & fast.</p>
-
-<p><strong>Q3: What is package.json?</strong></p>
-<p>The ID card of your project. It lists:</p>
-<ul>
-<li>Project name & version</li>
-<li>Dependencies (libraries you installed)</li>
-<li>Scripts (like <code>npm start</code>)</li>
-</ul>
-
-<p><strong>Q4: require() vs import?</strong></p>
-<p><code>require()</code> is old Node.js (CommonJS). <code>import</code> is new modern JS (ES Modules). Node supports both now.</p>
-
-<hr>
-
-<h3>⚡ Express.js</h3>
-
-<p><strong>Q5: What is Middleware?</strong></p>
-<p>Functions that sit in the middle of the request. Think of an airport security check. You pass security (middleware) before you get to your gate (route). Examples: <code>express.json()</code>, <code>cors()</code>, <code>auth</code>.</p>
-
-<p><strong>Q6: App.use() vs App.get()?</strong></p>
-<p><code>app.use()</code> runs for ALL requests (global settings). <code>app.get()</code> only runs for GET requests on a specific URL.</p>
-
-<p><strong>Q7: What is CORS?</strong></p>
-<p><strong>Cross-Origin Resource Sharing.</strong> By default, browsers block requests from frontend (localhost:3000) to backend (localhost:5000) for security. CORS middleware allows them to talk.</p>
-
-<p><strong>Q8: How to handle errors?</strong></p>
-<p>Use a special middleware at the end with 4 arguments: <code>(err, req, res, next)</code>. If any route calls <code>next(err)</code>, this function catches it!</p>
-
-<hr>
+<h3>⚡ Express</h3>
+<p><strong>Q: Middleware?</strong> Functions that run between request and response. (See detailed section below)</p>
+<p><strong>Q: CORS?</strong> Security rule. Allows React (port 3000) to talk to Express (port 5000).</p>
 
 <h3>🍃 MongoDB</h3>
+<p><strong>Q: SQL vs NoSQL?</strong> SQL = Tables/Rows. NoSQL = Documents/JSON. (See detailed section below)</p>
+<p><strong>Q: Indexing?</strong> Makes search fast. Like a book index.</p>
 
-<p><strong>Q9: SQL vs NoSQL?</strong></p>
-<p><strong>SQL:</strong> Tables, Rows, Fixed columns. Good for strict data (Banking).</p>
-<p><strong>NoSQL:</strong> Documents, JSON, Flexible. Good for fast changing apps (Social Media).</p>
+<h3>⚛️ React</h3>
+<p><strong>Q: Virtual DOM?</strong> Memory copy of UI. Updates only changed parts. Fast!</p>
+<p><strong>Q: Props vs State?</strong> Props = Passed down (read-only). State = Internal memory (changeable).</p>
+`
+  },
 
-<p><strong>Q10: What is an Index?</strong></p>
-<p>Like the index at the back of a book. Without it, MongoDB scans every document (slow). WITH it, MongoDB goes straight to the data (fast).</p>
+  // ========== DETAILED INTERVIEW QUESTIONS (THE 9 QUESTIONS) ==========
+  "1. SQL vs NoSQL": {
+    concept: `
+<p><strong>🗄️ SQL vs NoSQL - Simple Explanation</strong></p>
 
-<p><strong>Q11: What is Replication?</strong></p>
-<p>Saving copies of data on multiple servers. If one server dies, the data is safe on another.</p>
-
-<p><strong>Q12: Aggregation Pipeline?</strong></p>
-<p>Advanced filtering. Think of it like a factory line: Filter data → Group it → Calculate sum → Sort it.</p>
-
-<hr>
-
-<h3>⚛️ React.js</h3>
-
-<p><strong>Q13: What is the Virtual DOM?</strong></p>
-<p>React keeps a "blueprint" (copy) of the page in memory. When data changes, it updates the blueprint first, compares it to the real page, and only updates the *exact* part that changed. This makes it super fast.</p>
-
-<p><strong>Q14: State vs Props?</strong></p>
-<p><strong>Props:</strong> Passed down from parent. Read-only. (Like DNA given by parents)</p>
-<p><strong>State:</strong> Private data inside component. Can change. (Like your mood)</p>
-
-<p><strong>Q15: What is JSX?</strong></p>
-<p>JavaScript XML. Syntax that lets us write HTML inside JavaScript. <code>const tag = &lt;h1&gt;Hi&lt;/h1&gt;</code>.</p>
-
-<p><strong>Q16: useEffect Hook?</strong></p>
-<p>Handles "side effects" - things that happen *after* render. Examples: Fetching data, changing document title, setting timers.</p>
-
-<p><strong>Q17: What is Prop Drilling?</strong></p>
-<p>Passing data through many layers of components (Grandparent → Parent → Child → Grandchild). Bad! Fix it using <strong>Context API</strong> or <strong>Redux</strong>.</p>
-
-<p><strong>Q18: Class vs Functional Components?</strong></p>
-<p><strong>Class:</strong> Old way, confusing <code>this</code> keyword, lifecycle methods (componentDidMount).</p>
-<p><strong>Functional:</strong> New way, simple functions, uses Hooks. Preferred!</p>
-
-<hr>
-
-<h3>🔐 MERN Full Stack</h3>
-
-<p><strong>Q19: What is MVC?</strong></p>
-<p>Model, View, Controller.</p>
+<p><strong>SQL (Like MySQL, PostgreSQL):</strong></p>
 <ul>
-<li><strong>Model:</strong> Database structure (Mongoose Schema)</li>
-<li><strong>View:</strong> What user sees (React)</li>
-<li><strong>Controller:</strong> Logic (Express functions)</li>
+<li>Data stored in <strong>tables</strong> with rows and columns (like Excel)</li>
+<li>Need to define structure BEFORE adding data</li>
+<li>Good for: Banking, complex relationships</li>
 </ul>
 
-<p><strong>Q20: How does Login work? (JWT)</strong></p>
-<p>User sends password -> Server checks hash -> Server signs a 'Token' -> User saves token -> User shows token for next requests.</p>
-
-<p><strong>Q21: Secure a password?</strong></p>
-<p>NEVER store plain text. Use <strong>bcrypt</strong> to hash (scramble) it. 123456 → $2b$10$X8...</p>
-
-<p><strong>Q22: HTTP Status Codes?</strong></p>
+<p><strong>NoSQL (Like MongoDB):</strong></p>
 <ul>
-<li>200: Success</li>
-<li>201: Created</li>
-<li>400: Bad Data</li>
-<li>401: Unauthorized (Login needed)</li>
-<li>404: Not Found</li>
-<li>500: Server Error</li>
+<li>Data stored as <strong>documents</strong> (like JSON objects)</li>
+<li>Flexible - can add any fields anytime</li>
+<li>Good for: Fast development, changing data</li>
+</ul>
+
+<p><strong>Why MongoDB for MERN?</strong></p>
+<ul>
+<li>✅ JavaScript everywhere - MongoDB uses JSON format</li>
+<li>✅ Fast to build - no need to plan complex tables</li>
+</ul>
+`
+  },
+
+  "2. REST vs GraphQL": {
+    concept: `
+<p><strong>🔌 REST vs GraphQL</strong></p>
+
+<p><strong>REST:</strong> Many URLs, fixed responses. (Simple)</p>
+<p><strong>GraphQL:</strong> One URL, you choose what data. (Efficient)</p>
+
+<pre class="language-javascript">
+// REST - Get user
+GET /api/user/1
+// Returns everything: { id, name, email, age, address... }
+
+// GraphQL - Get ONLY name
+query { user(id: 1) { name } }
+// Returns: { name: "Ali" }
+</pre>
+`
+  },
+
+  "3. What is Express.js?": {
+    concept: `
+<p><strong>⚡ Express.js - Why use it?</strong></p>
+<p>It makes Node.js easier!</p>
+
+<p><strong>Without Express:</strong> You have to manually check every URL and parsing data is hard.</p>
+<p><strong>With Express:</strong></p>
+<pre class="language-javascript">
+// Easy Routing
+app.get('/home', (req, res) => res.send('Home'));
+
+// Easy JSON
+app.use(express.json());
+
+// Easy Middleware
+app.use(cors());
+</pre>
+`
+  },
+
+  "4. How Middleware Works": {
+    concept: `
+<p><strong>🔗 Middleware = Checkpoints</strong></p>
+<p>Think of it as security guards checking before you enter a building.</p>
+
+<pre class="language-javascript">
+Request → [Guard 1] → [Guard 2] → Your Code → Response
+
+// Example: Check if logged in
+const auth = (req, res, next) => {
+  if (!req.headers.token) return res.send('Stop!');
+  next(); // Go to next step!
+};
+
+app.get('/profile', auth, (req, res) => {
+  res.send('Welcome User');
+});
+</pre>
+`
+  },
+
+  "5. Async/Await vs Promises": {
+    concept: `
+<p><strong>⏱️ Handling Async (Slow) Code</strong></p>
+
+<p><strong>1. Callbacks (Old):</strong> functions inside functions. Messy.</p>
+<p><strong>2. Promises (Better):</strong> Uses <code>.then()</code>.</p>
+<pre class="language-javascript">
+getData().then(data => console.log(data));
+</pre>
+
+<p><strong>3. Async/Await (Best):</strong> Looks like normal code!</p>
+<pre class="language-javascript">
+async function start() {
+    const data = await getData();
+    console.log(data);
+}
+</pre>
+`
+  },
+
+  "6. What is Mongoose?": {
+    concept: `
+<p><strong>🔷 Mongoose = MongoDB + Rules</strong></p>
+<p>MongoDB by default accepts ANYTHING. Mongoose adds rules (Schemas).</p>
+
+<pre class="language-javascript">
+// Define Rules
+const userSchema = new mongoose.Schema({
+    email: { type: String, required: true },
+    age: { type: Number, min: 18 } // Must be 18+
+});
+
+// Now if you try to save age: 10, Mongoose stops you!
+</pre>
+`
+  },
+
+  "7. Authentication Flow": {
+    concept: `
+<p><strong>🔐 Auth - How it works</strong></p>
+<ol>
+<li><strong>Register:</strong> User sends password. Server scrambles it (bcrypt) and saves.</li>
+<li><strong>Login:</strong> User sends password. Server checks hash. If good, gives a <strong>Token</strong> (JWT).</li>
+<li><strong>Access:</strong> User shows Token to enter private pages.</li>
+</ol>
+
+<pre class="language-javascript">
+// Hash Password
+const hash = await bcrypt.hash('123456', 10);
+
+// Create Token
+const token = jwt.sign({ id: user._id }, 'SECRET_KEY');
+</pre>
+`
+  },
+
+  "8. CRUD Operations": {
+    concept: `
+<p><strong>📝 CRUD with Mongoose</strong></p>
+
+<pre class="language-javascript">
+// CREATE
+await User.create({ name: 'Ali' });
+
+// READ
+const users = await User.find();
+const oneUser = await User.findById('123...');
+
+// UPDATE
+await User.findByIdAndUpdate('123...', { name: 'New Name' });
+
+// DELETE
+await User.findByIdAndDelete('123...');
+</pre>
+`
+  },
+
+  "9. HTTP Status Codes": {
+    concept: `
+<p><strong>📊 Status Codes Cheat Sheet</strong></p>
+<ul>
+<li><strong>200:</strong> OK (Success)</li>
+<li><strong>201:</strong> Created (New thing made)</li>
+<li><strong>400:</strong> Bad Request (User sent wrong data)</li>
+<li><strong>401:</strong> Unauthorized (Login failed)</li>
+<li><strong>404:</strong> Not Found (Wrong URL)</li>
+<li><strong>500:</strong> Server Error (Our code broke)</li>
 </ul>
 `
   }

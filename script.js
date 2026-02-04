@@ -16,6 +16,9 @@ const cardContent = document.getElementById('cardContent');
 const btnConcept = document.getElementById('btnConcept');
 const btnExample = document.getElementById('btnExample');
 const categorySearch = document.getElementById('categorySearch');
+const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+const mobileOverlay = document.getElementById('mobileOverlay');
+const sidebar = document.querySelector('.sidebar');
 
 // Initialize
 function init() {
@@ -23,6 +26,7 @@ function init() {
     console.log('interviewData:', typeof interviewData, interviewData);
     renderSidebar();
     setupEventListeners();
+    setupMobileMenu();
 }
 
 // Render Sidebar with all categories
@@ -195,6 +199,52 @@ function setupEventListeners() {
             btnConcept.click();
         }
     });
+}
+
+// Mobile Menu Functionality
+function setupMobileMenu() {
+    // Toggle menu on button click
+    mobileMenuToggle.addEventListener('click', () => {
+        sidebar.classList.toggle('mobile-open');
+        mobileOverlay.classList.toggle('active');
+
+        // Change icon
+        const icon = mobileMenuToggle.querySelector('i');
+        if (sidebar.classList.contains('mobile-open')) {
+            icon.classList.remove('fa-bars');
+            icon.classList.add('fa-times');
+        } else {
+            icon.classList.remove('fa-times');
+            icon.classList.add('fa-bars');
+        }
+    });
+
+    // Close menu when overlay is clicked
+    mobileOverlay.addEventListener('click', () => {
+        sidebar.classList.remove('mobile-open');
+        mobileOverlay.classList.remove('active');
+        const icon = mobileMenuToggle.querySelector('i');
+        icon.classList.remove('fa-times');
+        icon.classList.add('fa-bars');
+    });
+
+    // Close menu when a category is selected (on mobile)
+    const closeMobileMenu = () => {
+        if (window.innerWidth <= 768) {
+            sidebar.classList.remove('mobile-open');
+            mobileOverlay.classList.remove('active');
+            const icon = mobileMenuToggle.querySelector('i');
+            icon.classList.remove('fa-times');
+            icon.classList.add('fa-bars');
+        }
+    };
+
+    // Add to category selection
+    const originalSelectCategory = window.selectCategory || selectCategory;
+    window.selectCategory = function (category) {
+        originalSelectCategory(category);
+        closeMobileMenu();
+    };
 }
 
 // Start the app

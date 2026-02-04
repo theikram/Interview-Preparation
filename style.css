@@ -460,29 +460,261 @@ li code {
     background: var(--primary);
 }
 
-/* Responsive */
+/* Mobile Menu Toggle */
+.mobile-menu-toggle {
+    display: none;
+    position: fixed;
+    top: 1rem;
+    left: 1rem;
+    z-index: 1000;
+    background: var(--primary);
+    border: none;
+    color: white;
+    width: 45px;
+    height: 45px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.5rem;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(108, 92, 231, 0.4);
+}
+
+.mobile-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 998;
+    backdrop-filter: blur(4px);
+}
+
+/* Responsive Breakpoints */
+
+/* Tablet (768px - 1024px) */
+@media (max-width: 1024px) {
+    :root {
+        --sidebar-width: 200px;
+    }
+
+    .card {
+        padding: 1.2rem 1.5rem;
+    }
+
+    .sub-topic-nav {
+        max-height: 30vh;
+    }
+}
+
+/* Mobile Landscape & Small Tablets (481px - 768px) */
 @media (max-width: 768px) {
+    .mobile-menu-toggle {
+        display: flex;
+    }
+
     .sidebar {
-        width: 60px;
-        padding: 0.5rem;
+        position: fixed;
+        left: -100%;
+        top: 0;
+        bottom: 0;
+        width: 280px;
+        z-index: 999;
+        transition: left 0.3s ease;
+        box-shadow: 4px 0 20px rgba(0, 0, 0, 0.5);
     }
 
-    .logo span,
-    .search-box {
-        display: none;
+    .sidebar.mobile-open {
+        left: 0;
     }
 
-    .nav-item {
-        padding: 0.8rem;
-        text-align: center;
+    .mobile-overlay.active {
+        display: block;
+    }
+
+    .logo {
+        font-size: 1.2rem;
+        padding: 1rem 0.5rem;
+    }
+
+    .top-bar {
+        padding: 1rem;
+        padding-left: 4rem;
+    }
+
+    .top-bar h1 {
         font-size: 1.2rem;
     }
 
     .sub-topic-nav {
+        padding: 0.8rem 1rem;
         max-height: 25vh;
+        gap: 0.5rem;
+    }
+
+    .topic-chip {
+        font-size: 0.75rem;
+        padding: 0.35rem 0.7rem;
+    }
+
+    .content-area {
+        padding: 0.8rem 1rem;
     }
 
     .card {
         padding: 1rem;
+        border-radius: 8px;
+    }
+
+    .card h2 {
+        font-size: 1.1rem;
+    }
+
+    .card-content {
+        font-size: 0.9rem;
+    }
+
+    /* Better code block on mobile */
+    pre[class*="language-"] {
+        padding: 1rem !important;
+        padding-top: 2rem !important;
+        font-size: 0.8rem !important;
+        margin: 1rem 0 !important;
+        overflow-x: auto;
+    }
+
+    code[class*="language-"] {
+        font-size: 0.8rem !important;
+    }
+
+    /* Tables scroll horizontally on mobile */
+    .card-content table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+        font-size: 0.8rem;
+    }
+
+    .card-content th,
+    .card-content td {
+        padding: 0.5rem 0.7rem;
+    }
+}
+
+/* Mobile Portrait (up to 480px) */
+@media (max-width: 480px) {
+    .top-bar h1 {
+        font-size: 1rem;
+    }
+
+    .sub-topic-nav {
+        padding: 0.6rem 0.8rem;
+        max-height: 20vh;
+    }
+
+    .topic-chip {
+        font-size: 0.7rem;
+        padding: 0.3rem 0.6rem;
+    }
+
+    .content-area {
+        padding: 0.6rem 0.8rem;
+    }
+
+    .card {
+        padding: 0.8rem;
+    }
+
+    .card h2 {
+        font-size: 1rem;
+        margin-bottom: 0.8rem;
+    }
+
+    .card-content {
+        font-size: 0.85rem;
+        line-height: 1.6;
+    }
+
+    .card-content p {
+        margin-bottom: 0.8rem;
+    }
+
+    .card-content ul,
+    .card-content ol {
+        margin-left: 1rem;
+    }
+
+    pre[class*="language-"] {
+        padding: 0.8rem !important;
+        padding-top: 1.8rem !important;
+        font-size: 0.75rem !important;
+        border-radius: 6px !important;
+    }
+
+    code[class*="language-"] {
+        font-size: 0.75rem !important;
+        line-height: 1.5 !important;
+    }
+
+    p code,
+    li code {
+        font-size: 0.8em;
+        padding: 0.15rem 0.4rem;
+    }
+
+    .welcome-box h1 {
+        font-size: 2.5rem;
+    }
+
+    .welcome-box h2 {
+        font-size: 1.3rem;
+    }
+
+    .welcome-box p {
+        font-size: 0.9rem;
+        padding: 0 1rem;
+    }
+}
+
+/* Very Small Devices (up to 360px) */
+@media (max-width: 360px) {
+    .mobile-menu-toggle {
+        width: 40px;
+        height: 40px;
+        font-size: 1.3rem;
+    }
+
+    .sidebar {
+        width: 260px;
+    }
+
+    .top-bar {
+        padding: 0.8rem;
+        padding-left: 3.5rem;
+    }
+
+    .card {
+        padding: 0.6rem;
+    }
+
+    .card-content {
+        font-size: 0.8rem;
+    }
+}
+
+/* Landscape mode adjustments */
+@media (max-height: 500px) and (orientation: landscape) {
+    .sub-topic-nav {
+        max-height: 15vh;
+    }
+
+    .welcome-box h1 {
+        font-size: 2rem;
+    }
+
+    .welcome-box h2 {
+        font-size: 1.2rem;
     }
 }
